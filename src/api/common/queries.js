@@ -180,26 +180,15 @@ export const listedParcelsQuery = (skip, orderDir, size) => {
 };
 
 export const raffleQuery = (id) => {
-  return `{
-    raffles(where: {id: "${id}" }) {
-      ticketPools {
+    return `{
+      raffleTicketPools(first: 10, where: { raffle: "${id}" }) {
         id
-        prizes{
+        prizes {
           id
-          quantity
+          prizeQuantity
         }
       }
-      stats {
-        totalCommon
-        totalUncommon
-        totalRare
-        totalLegendary
-        totalMythical
-        totalGodLike
-        totalDrop
-      }
-    }
-  }`
+    }`
 };
 
 export const raffleEnteredQuery = (address) => {

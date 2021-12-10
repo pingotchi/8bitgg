@@ -5,18 +5,22 @@ import classNames from 'classnames';
 
 import { ticketStyles } from '../styles';
 
-import itemUtils from '../../../utils/itemUtils';
 import commonUtils from '../../../utils/commonUtils';
 import { RaffleContext } from '../../../contexts/RaffleContext';
 
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 import ghst from '../../../assets/images/ghst-doubleside.gif';
+import itemUtils from '../../../utils/itemUtils';
 
 export default function RaffleTablee({raffleEnded}) {
     const classes = ticketStyles();
 
-    const { tickets, setTickets, raffleSpinner, pricesSpinner, countChances, formatChance } = useContext(RaffleContext);
+    const { tickets, setTickets, raffleSpinner, supplySpinner, pricesSpinner, countChances, formatChance } = useContext(RaffleContext);
+
+    const getTicketIconPath = (iconId) => {
+        return require(`../../../assets/tickets/${iconId}.svg`).default;
+    };
 
     const handleInputChange = (event, i) => {
         let newValue = event.target.value > 0 ? event.target.value : '';
@@ -28,10 +32,11 @@ export default function RaffleTablee({raffleEnded}) {
 
             return modified
         });
+        
     };
     
     return (
-        <>
+        <Box>
             <Grid container spacing={2} className={classes.row}>
                 <Grid item xs={12} md={3} style={{ position: 'relative' }}>
                     <Typography variant='h6' className={classes.subtitle}>Entered Tickets</Typography>
@@ -50,7 +55,6 @@ export default function RaffleTablee({raffleEnded}) {
                         />
                     </Box> */}
                 </Grid>
-
                 <Grid container item spacing={1} xs={12} md={8} lg={9}>
                     {
                         tickets.map((ticket, i) => {
@@ -72,12 +76,10 @@ export default function RaffleTablee({raffleEnded}) {
                     }
                 </Grid>
             </Grid>
-
             <Grid container spacing={2} className={classes.row}>
                 <Grid item xs={12} md={4} lg={3}>
                     <Typography variant='h6' className={classes.subtitle}>Items in Raffle</Typography>
                 </Grid>
-
                 <Grid container item spacing={1} xs={12} md={8} lg={9}>
                     {
                         tickets.map((ticket, i) => {
@@ -100,7 +102,6 @@ export default function RaffleTablee({raffleEnded}) {
                     }
                 </Grid>
             </Grid>
-
             <Grid container spacing={2} className={classes.row}>
                 <Grid item xs={12} md={4} lg={3} className={classes.toggleWrapper}>
                     <Typography variant='h6' className={classes.subtitle}>
@@ -119,14 +120,13 @@ export default function RaffleTablee({raffleEnded}) {
                         </Tooltip>
                     </Typography>
                 </Grid>
-
                 <Grid container item spacing={1} xs={12} md={8} lg={9}>
                     {
                         tickets.map((ticket, i) => {
                             return <Grid item xs={4} sm={true} key={i} className={classes.ticketBg}>
-                                <img src={itemUtils.getTicketImg(ticket.rarity)} alt={'ticket-' + ticket.rarity} />
+                                <img src={getTicketIconPath(ticket.rarity)} alt={'ticket-' + ticket.rarity} />
                                 <Box textAlign='center' className={classNames(classes.textHighlight, ticket.rarity, classes.ticketVisual)}>
-                                    {raffleSpinner ? (
+                                    {supplySpinner ? (
                                         <CircularProgress color="inherit" size={20} style={{bottom: -5, position: 'relative'}}/>
                                     ) : (
                                         <Typography
@@ -143,7 +143,6 @@ export default function RaffleTablee({raffleEnded}) {
                     }
                 </Grid>
             </Grid>
-
             <Grid container spacing={2} className={classes.row}>
                 <Grid item xs={12} md={4} lg={3}>
                     <Typography variant='h6' className={classes.subtitle}>
@@ -162,13 +161,12 @@ export default function RaffleTablee({raffleEnded}) {
                         </Tooltip>
                     </Typography>
                 </Grid>
-
                 <Grid container item spacing={1} xs={12} md={8} lg={9}>
                     {
                         tickets.map((ticket, i) => {
                             return <Grid item xs={4} sm={true} key={i} className={classNames(classes.chance, ticket.rarity)}>
                                 <Box textAlign='center' className={classNames(classes.textHighlight, ticket.rarity, classes.ticketVisual)}>
-                                    {raffleSpinner ? (
+                                    {supplySpinner ? (
                                         <CircularProgress color="inherit" size={20} style={{bottom: -5, position: 'relative'}}/>
                                     ) : (
                                         <Typography
@@ -185,7 +183,6 @@ export default function RaffleTablee({raffleEnded}) {
                     }
                 </Grid>
             </Grid>
-
             <Grid container spacing={2} className={classes.row}>
                 <Grid item xs={12} md={4} lg={3}>
                     <Typography variant='h6' className={classes.subtitle}>
@@ -204,7 +201,6 @@ export default function RaffleTablee({raffleEnded}) {
                         </Tooltip>
                     </Typography>
                 </Grid>
-
                 <Grid container item spacing={1} xs={12} md={8} lg={9}>
                     {
                         tickets.map((ticket, i) => {
@@ -228,7 +224,6 @@ export default function RaffleTablee({raffleEnded}) {
                     }
                 </Grid>
             </Grid>
-
             <Grid container spacing={2} className={classes.row}>
                 <Grid item xs={12} md={4} lg={3}>
                     <Typography variant='h6' className={classes.subtitle}>
@@ -247,7 +242,6 @@ export default function RaffleTablee({raffleEnded}) {
                         </Tooltip>
                     </Typography>
                 </Grid>
-
                 <Grid container item spacing={1} xs={12} md={8} lg={9}>
                     {
                         tickets.map((ticket, i) => {
@@ -266,6 +260,10 @@ export default function RaffleTablee({raffleEnded}) {
                     }
                 </Grid>
             </Grid>
-        </>
+
+            <Box className={classes.itemsWrapper}>
+                <Typography color='error.main'>Items display comming soon</Typography>
+            </Box>
+        </Box>
     );
 }

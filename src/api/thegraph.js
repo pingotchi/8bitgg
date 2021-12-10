@@ -8,6 +8,7 @@ import Web3 from 'web3';
 const web3 = new Web3();
 
 const baseUrl = 'https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-core-matic';
+const raffleOfficial = 'https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-matic-raffle';
 const raffle = 'https://api.thegraph.com/subgraphs/name/froid1911/aavegotchi-raffles';
 const gotchiSVGs = 'https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-svg';
 const realm = 'https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-realm-matic';
@@ -21,6 +22,7 @@ const clientFactory = (() => {
 
     return {
         client: createClient(baseUrl),
+        raffleOfficialClient: createClient(raffleOfficial),
         raffleClient: createClient(raffle),
         svgsClient: createClient(gotchiSVGs),
         realmClient: createClient(realm)
@@ -192,6 +194,10 @@ export default {
         }).catch((error) => console.log(error));
     },
 
+    async getRaffleOffData(query) {
+        return await getGraphData(clientFactory.raffleOfficialClient, query);
+    },
+
     async getRaffleData(query) {
         return await getGraphData(clientFactory.raffleClient, query);
     },
@@ -199,18 +205,16 @@ export default {
     async getRaffle(id) {
         return await this.getRaffleData(raffleQuery(id)).then((response) => {
             let data = [];
-            let total = response.data.raffles[0].stats;
-            let prizes = response.data.raffles[0].ticketPools;
 
-            prizes.forEach((pool) => {
+            response.data.raffleTicketPools.forEach((pool) => {
                 data.push({
                     id: pool.id,
-                    items: pool.prizes.reduce((a, b) => a + +b.quantity, 0),
+                    items: pool.prizes.reduce((a, b) => a + +b.prizeQuantity, 0),
                     prizes: pool.prizes
                 });
             });
 
-            return [data, total];
+            return data;
         });
     },
 

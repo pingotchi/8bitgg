@@ -10,11 +10,11 @@ const RaffleContextProvider = (props) => {
     const [loadingEntered, setLoadingEntered] = useState(true);
 
     const [raffleSpinner, setRaffleSpinner] = useState(true);
-    // const [supplySpinner, setSupplySpinner] = useState(true);
+    const [supplySpinner, setSupplySpinner] = useState(true);
     const [pricesSpinner, setPricesSpinner] = useState(true);
 
     useEffect(() => {
-        if(!raffleSpinner && !loadingEntered) {
+        if(!raffleSpinner && !supplySpinner && !loadingEntered) {
             setTickets((ticketsCache) => {
                 return ticketsCache.map((ticket, i) => {
                     ticket.chance = countChances(ticket.value, ticket.entered, ticket.items);
@@ -22,28 +22,22 @@ const RaffleContextProvider = (props) => {
                 });
             });
         }
-    }, [raffleSpinner, loadingEntered])
+    }, [raffleSpinner, supplySpinner, loadingEntered])
 
-    const getRaffleData = (raffle, priceQuery) => {
+    const getRaffleData = (raffle, priceQuery, enteredQuery) => {
         getRaffle(raffle);
         getPrices(priceQuery);
+        loadEntered(enteredQuery);
     };
 
     const getRaffle = (raffle) => {
         setRaffleSpinner(true);
 
         thegraph.getRaffle(raffle).then((response) => {
-            let [prizes, total] = response;
-
-            console.log(prizes);
-
             setTickets((ticketsCache) => {
                 return ticketsCache.map((ticket, i) => {
-                    ticket.items = prizes[i].items;
-                    ticket.prizes = prizes[i].prizes;
-                    ticket.entered = total[
-                        ticket.rarity === 'godlike' ? 'totalGodLike' : `total${commonUtils.capitalize(ticket.rarity)}`
-                    ];
+                    ticket.items = response[i].items;
+                    ticket.prizes = response[i].prizes;
                     return ticket;
                 });
             });
@@ -70,6 +64,22 @@ const RaffleContextProvider = (props) => {
             });
             setPricesSpinner(false);
         });
+    };
+
+    const loadEntered = (query) => {
+        setSupplySpinner(true);
+
+        thegraph.getRaffleOffData(query).then((response)=> {
+            setTickets((ticketsCache) => {
+                return ticketsCache.map((ticket, i) => {
+                    ticket.entered = response.data.total[
+                        ticket.rarity === 'godlike' ? 'totalGodLike' : `total${commonUtils.capitalize(ticket.rarity)}`
+                    ];
+                    return ticket;
+                });
+            });
+            setSupplySpinner(false);
+        }).catch(error => console.log(error))
     };
 
     const getAddressEntered = (address, raffle) => {
@@ -113,6 +123,7 @@ const RaffleContextProvider = (props) => {
             formatChance,
 
             raffleSpinner,
+            supplySpinner,
             pricesSpinner
         }}>
             { props.children }
