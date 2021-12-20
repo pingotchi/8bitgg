@@ -8,6 +8,7 @@ import LoginButton from '../../components/Login/LoginButton';
 
 import TwitterIcon from '@mui/icons-material/Twitter';
 import MenuIcon from '@mui/icons-material/Menu';
+
 import logo from '../../assets/images/logo.svg';
 import discord from '../../assets/images/discord.svg';
 import github from '../../assets/images/github.png';
@@ -89,6 +90,9 @@ export default function Header() {
                     <NavLink className={classes.navLink} to='/explorer'>
                         Explorer
                     </NavLink>
+                    {/* <NavLink className={classes.navLink} to='/guilds'>
+                        Guilds
+                    </NavLink> */}
                     <NavLink className={classes.navLink} to='/raffle-calculator'>
                         Raffle Calculator
                     </NavLink>
