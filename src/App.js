@@ -2,10 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 
 import { Box } from '@mui/system';
-
-import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import classNames from 'classnames';
 
 import SnackbarContextProvider from "./contexts/SnackbarContext";
 import Header from './root/Header/Header';
@@ -15,7 +12,6 @@ import Main from './pages/Main/Main';
 import Baazaar from './pages/Baazaar/Baazaar';
 import GhostExplorer from './pages/GhostExplorer/GhostExplorer';
 import Guilds from './pages/Guilds/Guilds';
-import CountdownTest from './pages/CountdownTest/CountdownTest';
 import Client from './pages/Client/Client';
 import Raffle from './pages/Raffle/Raffle';
 import NotFound from './pages/NotFound/NotFound';
@@ -44,8 +40,6 @@ const Wrapper = styled('div')(() => ({
 }));
 
 export default function App() {
-    const location = useLocation();
-
     return (
         <SnackbarContextProvider>
             <BaazaarContextProvider>
@@ -56,10 +50,10 @@ export default function App() {
                             <title>ghst_gg gotchiverse client</title>
                         </Helmet>
 
-                        <Wrapper className={classNames(classes.wrapper, location.pathname.split('/')[1])}>
+                        <Wrapper className={classes.wrapper}>
                             <Header />
 
-                            <Box className={classNames(classes.content)}>
+                            <Box className={classes.content}>
                                 <Switch>
                                     <Route exact path={`/`} component={ Main } />
                                     <Route exact path={`/market`} component={ Baazaar } />
@@ -67,13 +61,12 @@ export default function App() {
                                     <Route path={`/guilds`} component={ Guilds } />
                                     <Route path={`/client`} component={ Client } />
                                     <Route path={`/raffle-calculator`} component={ Raffle } />
-                                    <Route exact path={`/countdown-test`} component={ CountdownTest } />
                                     <Route exact path={`/404`} component={ NotFound } />
                                     <Redirect from='*' to='/404' />
                                 </Switch>
                             </Box>
 
-                            {location.pathname !== '/explorer' && <Footer />}
+                            <Footer />
                         </Wrapper>
 
                     </ClientContextProvider>
