@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Tooltip, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import classNames from 'classnames';
-import styles from "./styles";
+import styles from './styles';
 
 import graphUtils from '../../utils/graphUtils';
 
@@ -27,14 +27,14 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
     const gotchiSections = {
         badges: (children) => {
             return (
-                <div key={commonUtils.generateKey('badges')} className={classes.gotchiBadges}>
+                <div className={classes.gotchiBadges} key={`${gotchi.id}-badges`}>
                     {children}
                 </div>
             )
         },
         get id() {
             return (
-                <Tooltip key={commonUtils.generateKey('id')} title={`Haunt ${gotchi.hauntId}`} classes={{ tooltip: classes.customTooltip }} enterTouchDelay={0} placement='top' followCursor>
+                <Tooltip title={`Haunt ${gotchi.hauntId}`} classes={{ tooltip: classes.customTooltip }} enterTouchDelay={0} placement='top' followCursor key={`${gotchi.id}-id`}>
                     <div className={classes.gotchiId}>
                         {title || gotchi.id}
                     </div>
@@ -44,10 +44,10 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         get owner() {
             return (
                 <Link
-                    key={commonUtils.generateKey('owner')} 
                     className={classes.owner}
                     href={`/client/?address=${gotchi.owner.id}`}
-                    target="_blank"
+                    target='_blank'
+                    key={`${gotchi.id}-owner`}
                 >
                     <p>{commonUtils.cutAddress(gotchi.owner.id)}</p>
                 </Link>
@@ -55,7 +55,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         },
         get collateral() {
             return (
-                <Tooltip key={commonUtils.generateKey('collateral')}  title={collateral} classes={{ tooltip: classes.customTooltip }} enterTouchDelay={0} placement='top' followCursor>
+                <Tooltip title={collateral} classes={{ tooltip: classes.customTooltip }} enterTouchDelay={0} placement='top' followCursor key={`${gotchi.id}-collateral`}>
                     <div className={classes.gotchiBadge}>
                         <img src={graphUtils.getCollateralImg(collateral)} width={25} alt={collateral} />
                     </div>
@@ -65,17 +65,17 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         get level() {
             return (
                 <GotchiLevel
-                    key={commonUtils.generateKey('level')} 
                     level={gotchi.level}
                     toNextLevel={gotchi.toNextLevel}
                     experience={gotchi.experience}
                     size={25}
+                    key={`${gotchi.id}-level`} 
                 />
             )
         },
         get mainTraits() {
             return (
-                <div key={commonUtils.generateKey('mainTraits')}  className={classNames(classes.gotchiMainTraits, classes.gotchiTraits)}>
+                <div className={classNames(classes.gotchiMainTraits, classes.gotchiTraits)} key={`${gotchi.id}-mainTraits`}>
                     <div className={classes.gotchiTraitsInner}>
                         <HighlightNumber type={calculateRarityType(gotchi.modifiedRarityScore)}>
                             <p className={classes.mainVal}>
@@ -99,11 +99,11 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
             )
         },
         get numericTraits() {
-            return <GotchiTraitsHighlight key={commonUtils.generateKey('numericTraits')} traits={gotchi.numericTraits} currentTraits={gotchi.modifiedNumericTraits} />
+            return <GotchiTraitsHighlight traits={gotchi.numericTraits} currentTraits={gotchi.modifiedNumericTraits} key={`${gotchi.id}-numericTraits`} />
         },
         get wearablesLine() {
             return (
-                <div key={commonUtils.generateKey('wearablesLine')} className={classes.gotchiInnerSection}>
+                <div className={classes.gotchiInnerSection} key={`${gotchi.id}-wearablesLine`}>
                     <GotchiWearablesLine wearables={gotchi.equippedWearables}/>
                 </div>
             )
@@ -111,11 +111,11 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         get name() {
             return (
                 <Link
-                    key={commonUtils.generateKey('name')}
                     className={classes.gotchiName}
                     href={`https://aavegotchi.com/gotchi/${gotchi.id}`}
-                    target="_blank"
+                    target='_blank'
                     underline='none'
+                    key={`${gotchi.id}-name`}
                 >
                     <p>{gotchi.name ? gotchi.name : 'Unnamed'}</p>
                     <CallMade className={classes.callMadeIcon} />
@@ -124,7 +124,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         },
         get svg() {
             return (
-                <div key={commonUtils.generateKey('svg')} className={classes.gotchiSvg}>
+                <div className={classes.gotchiSvg} key={`${gotchi.id}-svg`}>
                     {
                         renderSvgByStats ? (
                             <GotchiSvgByStats gotchi={gotchi} size={'100%'} />
@@ -143,10 +143,10 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                 </div>
             )
         },
-        get revards() {
+        get rewards() {
             return (
                 gotchi.reward || gotchi.reward === 0 ? (
-                    <div key={commonUtils.generateKey('revards')} className={classes.rankBox}>
+                    <div className={classes.rankBox} key={`${gotchi.id}-rewards`}>
                         {gotchi.reward > 0 ? (
                             <Tooltip
                                 title={
@@ -154,7 +154,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                                         {gotchi.rewardStats.map((item, index) => {
                                             return item.reward !== 0 ? (
                                                 <div key={index}>
-                                                    <Typography variant='caption'>
+                                                   <Typography variant='caption'>
                                                         {item.name}[{item.position}] - <Box className={classes.rankReward}>
                                                             {commonUtils.formatPrice(item.reward)} <img src={ghstIcon} width='14' alt='GHST Token Icon' />
                                                         </Box>
@@ -178,7 +178,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                             </Tooltip>
                                 
                         ) : (
-                            <div key={commonUtils.generateKey('revards')} className={classes.rankStatus}>
+                            <div className={classes.rankStatus} key={`${gotchi.id}-rewards`}>
                                 <Typography className={classes.rankStatusText}>Unkranked</Typography>
                             </div>
                         )}

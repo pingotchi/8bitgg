@@ -59,8 +59,4 @@ export default {
     checkArrayForDuplicates(array) {
         return new Set(array).size !== array.length;
     },
-
-    generateKey(pre) {
-        return `${ pre }_${ new Date().getTime() }`;
-    }
 }
