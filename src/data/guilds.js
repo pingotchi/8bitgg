@@ -1,15 +1,20 @@
 const guilds = [
     {
         name: 'ordenGG',
-        logo: require('../assets/guilds/ordenGG.png').default,
+        logo: require('../assets/guilds/ordenGG.svg').default,
         members: [
+            '0xc46d3c9d93febdd5027c9b696fe576dc654c66de',
+            '0x4E7bf3694962fC482a16D60FD78f99db9C4C52B0',
             '0xADA8aA2777825bc615C5F12126F8bf275E2245e5',
-            '0x1315B9510Cd7f75A63BB59bA7d9D1FAd083d0667'
+            '0x1315B9510Cd7f75A63BB59bA7d9D1FAd083d0667',
+            '0x0BcDc503f78BFf5Dc7B867C6740226d9621117b1',
+            '0xA2BB90753CF0Ffa4BA056096b0218A2B2d92B784',
+            '0x65E43244d19C3e17058Dfb6F5e5E921402EbD964'
         ],
         description: [
             {
                 title: 'Description',
-                text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, quasi.'
+                text: 'e-sport & gamedev DAO always playing a good game ☀️'
             },
         ],
         banner: require('../assets/guilds/ordenGG-banner.png').default,
@@ -368,7 +373,6 @@ const guilds = [
         members: [
             '0x9f89Fe18A7AD4458eEa63Aad762aA8586E82eeD6',
             '0xbD6F5BdC401AB1Ca811e40755f4A2ddAd75cE2cc',
-            '0x17a3831B39cc557296d0C322f9C2D42C0b3A8F3f',
             '0x3A631b481a1B225e32D20C28BB531587e9F32dA0',
             '0xa1BbD8D39eD536DEa030A32F3F6C5916C845A800',
             '0x956F1CE3ff2ea59A8b41DF83Ce9F85ED59D73F92',

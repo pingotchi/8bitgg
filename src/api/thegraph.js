@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 import fetch from 'cross-fetch';
 import graphUtils from '../utils/graphUtils';
 import { gotchiesQuery, svgQuery, erc1155Query, userQuery, realmQuery, auctionQuery,
-    raffleQuery, raffleEntrantsQuery, listedParcelsQuery } from './common/queries';
+    raffleQuery, raffleEntrantsQuery, listedParcelsQuery, parselQuery } from './common/queries';
 import Web3 from 'web3';
 
 const web3 = new Web3();
@@ -281,6 +281,24 @@ export default {
         return await graphJoin(clientFactory.realmClient, getQueries()).then((response) => {
             return filterCombinedGraphData(response, ['parcels'], 'parcelId');
         });
+    },
+    
+    async getRealmByAddresses(addresses) {
+
+        let allRealm = [];
+
+        for(let address of addresses) {
+            let realm = await this.getRealmByAddress(address);
+
+            allRealm = [...allRealm, ...realm];
+        }
+        return allRealm;
+    },
+
+    async getRealmById(id) {
+        return await this.getRealmData(parselQuery(id)).then((response) => {
+            return response.data.parcel
+        })
     },
 
     async getRealmAuctionPrice(id) {
