@@ -185,9 +185,12 @@ export default {
         }
 
         return await graphJoin(clientFactory.client, getQueries()).then((response) => {
+            if (!response[0].data.user) return []; // terminate if thegraph has no data about address
+
             let filteredArray = filterCombinedGraphData(response, ['user', 'gotchisOwned'], 'id');
 
             return modifyTraits(filteredArray);
+
         });
     },
 
