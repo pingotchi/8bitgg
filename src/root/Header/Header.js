@@ -58,7 +58,7 @@ export default function Header() {
                 <Link href='https://github.com/orden-gg/ghst-gg' className={classes.socialLink} target='_blank' underline='none'>
                     <Button className={classes.iconButton} aria-label='add an alarm'>
                         <img src={ github } alt='' />
-                        <Box component='span' className={classes.iconButtonText}>11</Box>
+                        <Box component='span' className={classes.iconButtonText}>13</Box>
                     </Button>
                 </Link>
                 <Box className={classes.socialLinkJoin}>
