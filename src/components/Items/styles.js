@@ -48,8 +48,49 @@ const styles = makeStyles( theme => ({
         color: theme.palette.primary.main,
         fontWeight: 600 
     },
-    itemBalanceDivider: {
+    itemBalancxeDivider: {
         margin: '0 2px'
+    },
+    horizontalCard: {
+        display: "flex",
+        marginBottom: 5,
+
+        '&.common': {
+            backgroundColor: alpha(theme.palette.rarity.common, .1)
+        },
+        '&.uncommon': {
+            backgroundColor: alpha(theme.palette.rarity.uncommon, .1)
+        },
+        '&.rare': {
+            backgroundColor: alpha(theme.palette.rarity.rare, .1)
+        },
+        '&.legendary': {
+            backgroundColor: alpha(theme.palette.rarity.legendary, .1)
+        },
+        '&.mythical': {
+            backgroundColor: alpha(theme.palette.rarity.mythical, .1)
+        },
+        '&.godlike': {
+            backgroundColor: alpha(theme.palette.rarity.godlike, .1)
+        },
+        '&.drop': {
+            backgroundColor: alpha(theme.palette.rarity.drop, .1)
+        },
+        '&.humble': {
+            backgroundColor: alpha(theme.palette.realm.humble, .15)
+        },
+        '&.reasonable': {
+            backgroundColor: alpha(theme.palette.realm.reasonable, .15)
+        },
+        '&.spacious': {
+            backgroundColor: alpha(theme.palette.realm.spacious, .15)
+        },
+        '&.partner': {
+            backgroundColor: alpha(theme.palette.realm.partner, .15)
+        },
+        '&:hover .labelSlot': {
+            opacity: .7,
+        }
     }
 }));
 
@@ -229,6 +270,10 @@ const ERC1155InnerStyles = makeStyles( theme => ({
         
         '.tooltip-wearable &': { // iconWrapper
             minHeight: 60
+        },
+        '&.horizontal': {
+            width: 150,
+            height: 150
         }
     },
 

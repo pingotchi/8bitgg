@@ -1,7 +1,7 @@
-
 import { alpha } from '@mui/system';
 
 import { makeStyles } from "@mui/styles";
+import {global} from "@apollo/client/utilities/globals";
 
 const styles = makeStyles( theme => ({
     gotchi: {
@@ -26,9 +26,14 @@ const styles = makeStyles( theme => ({
 
         '&.narrowed': {
             background: 'none'
+        },
+
+        '&.horizontal': {
+            display: 'flex'
         }
     },
     gotchiSvg: {
+        minWidth: 150,
         margin: '0 -8px',
         padding: 8,
         position: 'relative',

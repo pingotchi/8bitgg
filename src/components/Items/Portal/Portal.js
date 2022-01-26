@@ -6,10 +6,7 @@ import CallMade from '@mui/icons-material/CallMade';
 import ghstIcon from '../../../assets/images/ghst-doubleside.gif';
 import commonUtils from '../../../utils/commonUtils';
 import Web3 from "web3";
-import sealedPortal from '../../../assets/images/portal-sealed.svg';
-import openPortal from '../../../assets/images/portal-open.svg';
-import h2SealedPortal from '../../../assets/images/h2_sealed.svg';
-import h2OpenPortal from '../../../assets/images/h2_open.svg';
+import PortalImage from "./common/PortalImage";
 
 var web3 = new Web3();
 
@@ -54,11 +51,7 @@ export default function Portal({portal}) {
                 </Tooltip>
             </div>
 
-            <img className={classes.portalImage} src={
-                portal.portal.hauntId === "1" ?
-                    (portal.category === '0' ? sealedPortal : openPortal) :
-                    (portal.category === '0' ? h2SealedPortal : h2OpenPortal)
-            } alt="Portal" />
+            <PortalImage portal={portal} />
 
             <div className={classNames(classes.label, classes.labelSlot)}>
                 [{portal.tokenId}]

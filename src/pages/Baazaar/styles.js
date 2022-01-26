@@ -171,7 +171,14 @@ const baazaarSortingBodyStyles = makeStyles( theme => ({
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill,minmax(192px,1fr))',
         gridGap: 12,
-        width: '100%'
+        width: '100%',
+
+        '&.horizontal': {
+            display: 'flex',
+            flexDirection: 'column',
+            gridTemplateColumns: 'none',
+            gridGap: 0
+        }
     },
     pagination: {
         display: 'flex',

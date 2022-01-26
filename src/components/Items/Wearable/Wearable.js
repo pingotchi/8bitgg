@@ -1,11 +1,12 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import classNames from 'classnames';
-
 import { ERC1155InnerStyles } from '../styles';
-
 import itemUtils from '../../../utils/itemUtils';
 import ERC1155 from '../ERC1155/ERC1155';
+import WearableImage from './common/WearableImage/WearableImage';
+import WearableName from "./common/WearableName";
+import WearableStats from "./common/WearableStats";
 
 export default function Wearable({wearable, raffleStats, tooltip}) {
     const classes = ERC1155InnerStyles();
@@ -28,23 +29,11 @@ export default function Wearable({wearable, raffleStats, tooltip}) {
             quantity: wearable.quantity
         }}>
 
-            <div className={classes.iconWrapper}>
-                <img
-                    src={itemUtils.getWearableImg(wearable.id || wearable.erc1155TypeId)}
-                    alt={name}
-                    className={classes.icon}
-                />
-            </div>
+            <WearableImage wearable={wearable} />
 
-            <div className={classes.nameWrapper}>
-                <Typography className={classNames(classes.name, classes.textHighlight, rarity)}>
-                    {name}
-                </Typography>
-            </div>
+            <WearableName wearable={wearable} />
 
-            <Typography variant='subtitle1' className={classes.stats}>
-                {stats}
-            </Typography>
+            <WearableStats wearable={wearable} />
 
             {raffleStats ? (
                 <Box>
