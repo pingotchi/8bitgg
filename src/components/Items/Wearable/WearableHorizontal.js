@@ -15,12 +15,12 @@ export default function WearableHorizontal({wearable, render}) {
     const gotchiSections = {
         // image
         get image() {
-            return <WearableImage wearable={wearable} />
+            return <WearableImage wearable={wearable} key={`${wearable.id}-wearable-image`} />
         },
 
         // body
         get body() {
-            return <div style={{'width': '70%'}}>
+            return <div style={{'width': '70%'}} key={`${wearable.id}-wearable-body`}>
                 <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
                     <div>
                         <CardName item={wearable} />
@@ -37,7 +37,7 @@ export default function WearableHorizontal({wearable, render}) {
 
         // price
         get price() {
-            return <HorizontalPrice item={wearable} />
+            return <HorizontalPrice item={wearable} key={`${wearable.id}-wearable-price`} />
         }
     }
 

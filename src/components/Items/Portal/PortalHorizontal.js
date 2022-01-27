@@ -15,12 +15,12 @@ export default function PortalHorizontal({portal, render}) {
     const gotchiSections = {
         // image
         get image() {
-            return <PortalImage portal={portal} />
+            return <PortalImage portal={portal} key={`${portal.id}-portal-image`} />
         },
 
         // body
         get body() {
-            return <div style={{'width': '70%'}}>
+            return <div style={{'width': '70%'}} key={`${portal.id}-portal-body`}>
                 <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
                     <div>
                         <CardName itemName={`Portal ${portal.tokenId}`} itemRarity={'none'} item={portal} />
@@ -37,7 +37,7 @@ export default function PortalHorizontal({portal, render}) {
 
         // price
         get price() {
-            return <HorizontalPrice item={portal} />
+            return <HorizontalPrice item={portal} key={`${portal.id}-portal-price`} />
         }
     }
 

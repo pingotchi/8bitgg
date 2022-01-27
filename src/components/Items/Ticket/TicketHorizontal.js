@@ -16,12 +16,12 @@ export default function TicketHorizontal({ticket, render}) {
     const gotchiSections = {
         // image
         get image() {
-            return <TicketImage ticket={ticket} />
+            return <TicketImage ticket={ticket} key={`${ticket.id}-ticket-image`}/>
         },
 
         // body
         get body() {
-            return <div style={{'width': '70%'}}>
+            return <div style={{'width': '70%'}} key={`${ticket.id}-ticket-body`}>
                 <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
                     <div>
                         <CardName itemName={`${ticket.name || itemUtils.getItemRarityName(ticket.erc1155TypeId)} ticket`}
@@ -39,7 +39,7 @@ export default function TicketHorizontal({ticket, render}) {
 
         // price
         get price() {
-            return <HorizontalPrice item={ticket} />
+            return <HorizontalPrice item={ticket} key={`${ticket.id}-ticket-price`} />
         }
     }
 

@@ -26,12 +26,12 @@ export default function GotchiHorizontal({gotchi, item, title, narrowed, renderS
 
         // image
         get image() {
-            return <GotchiSVG gotchi={gotchi} renderSvgByStats={renderSvgByStats} additionalClass={additionalClass}/>
+            return <GotchiSVG gotchi={gotchi} renderSvgByStats={renderSvgByStats} additionalClass={additionalClass} key={`${gotchi.id}-gotchi-image`} />
         },
 
         // body
         get body() {
-            return <div style={{'width': '70%'}}>
+            return <div style={{'width': '70%'}} key={`${gotchi.id}-gotchi-body`}>
                 <div style={{'display': 'flex', 'flexDirection': 'row', 'width': '100%'}}>
                     <div style={{minWidth: '50%'}}>
                         <GotchiId gotchi={gotchi} title={title} additionalClass={additionalClass}/>
@@ -66,7 +66,7 @@ export default function GotchiHorizontal({gotchi, item, title, narrowed, renderS
 
         // price
         get price() {
-            return <HorizontalPrice item={item} />
+            return <HorizontalPrice item={item} key={`${gotchi.id}-gotchi-price`} />
         }
     }
 
