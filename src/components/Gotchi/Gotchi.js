@@ -26,17 +26,17 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         },
         get id() {
             return (
-                <GotchiId gotchi={gotchi} title={title} />
+                <GotchiId gotchi={gotchi} title={title}  key={`${gotchi.id}-id`} />
             );
         },
         get owner() {
             return (
-                <GotchiOwner gotchi={gotchi} />
+                <GotchiOwner gotchi={gotchi} key={`${gotchi.id}-owner`} />
             );
         },
         get collateral() {
             return (
-                <GotchiCollateral gotchi={gotchi} />
+                <GotchiCollateral gotchi={gotchi} key={`${gotchi.id}-collateral`} />
             );
         },
         get level() {
@@ -52,7 +52,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         },
         get mainTraits() {
             return (
-                <GotchiMainTraits gotchi={gotchi} />
+                <GotchiMainTraits gotchi={gotchi} key={`${gotchi.id}-mainTraits`} />
             );
         },
         get numericTraits() {
@@ -67,17 +67,17 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
         },
         get name() {
             return (
-                <GotchiName gotchi={gotchi} />
+                <GotchiName gotchi={gotchi} key={`${gotchi.id}-name`} />
             );
         },
         get svg() {
             return (
-                <GotchiSVG gotchi={gotchi} renderSvgByStats={renderSvgByStats} />
+                <GotchiSVG gotchi={gotchi} renderSvgByStats={renderSvgByStats} key={`${gotchi.id}-svg`} />
             );
         },
         get rewards() {
             return (
-                <GotchiRewards gotchi={gotchi} />
+                <GotchiRewards gotchi={gotchi} key={`${gotchi.id}-rewards`} />
             );
         }
     }

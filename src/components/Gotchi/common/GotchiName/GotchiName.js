@@ -13,7 +13,6 @@ export default function GotchiName({gotchi, additionalClass}) {
             href={`https://aavegotchi.com/gotchi/${gotchi.id}`}
             target='_blank'
             underline='none'
-            key={`${gotchi.id}-name`}
         >
             <p>{gotchi.name ? gotchi.name : 'Unnamed'}</p>
             <CallMade className={classes.callMadeIcon} />

@@ -15,7 +15,7 @@ export default function GotchiMainTraits({gotchi}) {
     };
 
     return (
-        <div className={classNames(classes.gotchiMainTraits, classes.gotchiTraits)} key={`${gotchi.id}-mainTraits`}>
+        <div className={classNames(classes.gotchiMainTraits, classes.gotchiTraits)}>
             <div className={classes.gotchiTraitsInner}>
                 <HighlightNumber type={calculateRarityType(gotchi.modifiedRarityScore)}>
                     <p className={classes.mainVal}>

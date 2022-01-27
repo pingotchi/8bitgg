@@ -9,7 +9,7 @@ export default function GotchiSVG({gotchi, renderSvgByStats, additionalClass}) {
     const classes = styles();
 
     return (
-        <div className={classNames(classes.gotchiSvg, additionalClass)} key={`${gotchi.id}-svg`}>
+        <div className={classNames(classes.gotchiSvg, additionalClass)}>
             {
                 renderSvgByStats ? (
                     <GotchiSvgByStats gotchi={gotchi} size={'100%'} />

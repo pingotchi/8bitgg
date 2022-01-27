@@ -10,7 +10,7 @@ export default function GotchiRewards({gotchi}) {
 
     return (
         gotchi.reward || gotchi.reward === 0 ? (
-            <div className={classes.rankBox} key={`${gotchi.id}-rewards`}>
+            <div className={classes.rankBox}>
                 {gotchi.reward > 0 ? (
                     <Tooltip
                         title={

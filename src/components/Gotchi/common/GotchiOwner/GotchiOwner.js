@@ -11,7 +11,6 @@ export default function GotchiOwner({gotchi}) {
             className={classes.owner}
             href={`/client/?address=${gotchi.owner.id}`}
             target='_blank'
-            key={`${gotchi.id}-owner`}
         >
             <p>{commonUtils.cutAddress(gotchi.owner.id)}</p>
         </Link>
