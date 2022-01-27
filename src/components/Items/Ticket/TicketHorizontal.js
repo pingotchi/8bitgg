@@ -5,7 +5,9 @@ import styles from './../styles';
 import HorizontalPrice from "../common/HorizontalPrice/HorizontalPrice";
 import HorizontalLink from "../common/HorizontalLink/HorizontalLink";
 import TicketImage from "./common/TicketImage";
-import TicketName from "./common/TicketName";
+import CardName from "../common/CardName/CardName";
+import itemUtils from "../../../utils/itemUtils";
+import CardStats from "../common/CardStats/CardStats";
 
 export default function TicketHorizontal({ticket, render}) {
     const classes = styles();
@@ -22,10 +24,11 @@ export default function TicketHorizontal({ticket, render}) {
             return <div style={{'width': '70%'}}>
                 <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
                     <div>
-                        <TicketName ticket={ticket} />
+                        <CardName itemName={`${ticket.name || itemUtils.getItemRarityName(ticket.erc1155TypeId)} ticket`}
+                                  itemRarity={itemUtils.getItemRarityName(ticket.erc1155TypeId)} item={ticket} />
                     </div>
                     <div>
-                        Quantity: {ticket.quantity}
+                        <CardStats itemStats={`Quantity: ${ticket.quantity}`} />
                     </div>
                 </div>
                 <div>

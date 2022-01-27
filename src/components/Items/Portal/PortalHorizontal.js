@@ -5,6 +5,8 @@ import styles from './../styles';
 import HorizontalPrice from "../common/HorizontalPrice/HorizontalPrice";
 import HorizontalLink from "../common/HorizontalLink/HorizontalLink";
 import PortalImage from "./common/PortalImage";
+import CardName from "../common/CardName/CardName";
+import CardStats from "../common/CardStats/CardStats";
 
 export default function PortalHorizontal({portal, render}) {
     const classes = styles();
@@ -21,10 +23,10 @@ export default function PortalHorizontal({portal, render}) {
             return <div style={{'width': '70%'}}>
                 <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
                     <div>
-                        Portal {portal.tokenId}
+                        <CardName itemName={`Portal ${portal.tokenId}`} itemRarity={'none'} item={portal} />
                     </div>
                     <div>
-                        Haunt {portal.portal.hauntId}
+                        <CardStats itemStats={`Haunt ${portal.portal.hauntId}`} />
                     </div>
                 </div>
                 <div>

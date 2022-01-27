@@ -5,8 +5,8 @@ import styles from './../styles';
 import HorizontalPrice from "../common/HorizontalPrice/HorizontalPrice";
 import HorizontalLink from "../common/HorizontalLink/HorizontalLink";
 import WearableImage from "./common/WearableImage/WearableImage";
-import WearableName from "./common/WearableName";
-import WearableStats from "./common/WearableStats";
+import CardName from "../common/CardName/CardName";
+import CardStats from "../common/CardStats/CardStats";
 
 export default function WearableHorizontal({wearable, render}) {
     const classes = styles();
@@ -23,10 +23,10 @@ export default function WearableHorizontal({wearable, render}) {
             return <div style={{'width': '70%'}}>
                 <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
                     <div>
-                        <WearableName wearable={wearable} />
+                        <CardName item={wearable} />
                     </div>
                     <div>
-                        <WearableStats wearable={wearable} />
+                        <CardStats item={wearable} />
                     </div>
                 </div>
                 <div>

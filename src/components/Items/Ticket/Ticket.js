@@ -2,7 +2,7 @@ import React from 'react';
 import itemUtils from '../../../utils/itemUtils';
 import ERC1155 from '../ERC1155/ERC1155';
 import TicketImage from "./common/TicketImage";
-import TicketName from "./common/TicketName";
+import CardName from "../common/CardName/CardName";
 
 export default function Ticket({ticket}) {
     return (
@@ -15,7 +15,8 @@ export default function Ticket({ticket}) {
             quantity: ticket.quantity
         }}>
             <TicketImage ticket={ticket} />
-            <TicketName ticket={ticket} />
+            <CardName itemName={`${ticket.name || itemUtils.getItemRarityName(ticket.erc1155TypeId)} ticket`}
+                      itemRarity={itemUtils.getItemRarityName(ticket.erc1155TypeId)} item={ticket} />
         </ERC1155>
     )
 }

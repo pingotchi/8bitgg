@@ -7,6 +7,7 @@ import ghstIcon from '../../../assets/images/ghst-doubleside.gif';
 import commonUtils from '../../../utils/commonUtils';
 import Web3 from "web3";
 import PortalImage from "./common/PortalImage";
+import CardName from "../common/CardName/CardName";
 
 var web3 = new Web3();
 
@@ -65,9 +66,7 @@ export default function Portal({portal}) {
                 underline='none'
                 className={classNames(classes.nameWrapper, 'two-lined')}
             >
-                <Typography className={classNames(classes.name, classes.textHighlight)}>
-                    Portal {portal.tokenId}
-                </Typography>
+                <CardName itemName={`Portal ${portal.tokenId}`} itemRarity={'none'} item={portal} />
                 <CallMade className={classes.callMadeIcon} />
             </Link>
         </div>

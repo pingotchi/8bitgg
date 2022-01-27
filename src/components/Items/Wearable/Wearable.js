@@ -5,15 +5,12 @@ import { ERC1155InnerStyles } from '../styles';
 import itemUtils from '../../../utils/itemUtils';
 import ERC1155 from '../ERC1155/ERC1155';
 import WearableImage from './common/WearableImage/WearableImage';
-import WearableName from "./common/WearableName";
-import WearableStats from "./common/WearableStats";
+import CardName from "../common/CardName/CardName";
+import CardStats from "../common/CardStats/CardStats";
 
 export default function Wearable({wearable, raffleStats, tooltip}) {
     const classes = ERC1155InnerStyles();
-
-    const name = itemUtils.getItemNameById(wearable.id || wearable.erc1155TypeId);
     const rarity = itemUtils.getItemRarityById(wearable.id || wearable.erc1155TypeId);
-    const stats = itemUtils.getEmojiStatsById(wearable.id || wearable.erc1155TypeId);
     const slot = itemUtils.getItemSlotById(wearable.id || wearable.erc1155TypeId);
 
     return (
@@ -31,9 +28,9 @@ export default function Wearable({wearable, raffleStats, tooltip}) {
 
             <WearableImage wearable={wearable} />
 
-            <WearableName wearable={wearable} />
+            <CardName item={wearable} />
 
-            <WearableStats wearable={wearable} />
+            <CardStats item={wearable} />
 
             {raffleStats ? (
                 <Box>
