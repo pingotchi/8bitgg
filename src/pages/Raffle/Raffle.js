@@ -26,7 +26,8 @@ export default function Raffle() {
     const match = useRouteMatch();
     const location = useLocation();
     const history = useHistory();
-    const params = queryString.parse(location.search)
+    const params = queryString.parse(location.search);
+    const lastRaffle = raffles[raffles.length - 1];
 
     const [raffleActive, setRaffleActive] = useState(null);
 
@@ -83,7 +84,7 @@ export default function Raffle() {
                     <Route path={`${match.path}/:name`}>
                         <RaffleContent user={raffleActive} />
                     </Route>
-                    <Redirect from={match.path} to={`${match.path}/${raffles.at(-1).name}`} />
+                    <Redirect from={match.path} to={`${match.path}/${lastRaffle.name}`} />
                 </Switch>
             </RaffleContextProvider>
         </Box>

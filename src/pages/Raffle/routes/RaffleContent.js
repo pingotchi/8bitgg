@@ -18,12 +18,13 @@ export default function RaffleContent({user}) {
 
     useEffect(() => {
         const raffleName = raffles.some(item => item['name'] === name);
+        const lastRaffle = raffles[raffles.length - 1];
 
         if(!raffleName) { // redirect to last raffle if path do not exist
-            setRaffle(raffles.at(-1));
+            setRaffle(lastRaffle);
             setTickets([]);
 
-            history.push(`/raffle-calculator/${raffles.at(-1).name}`);
+            history.push(`/raffle-calculator/${lastRaffle.name}`);
         } else { // set current raffle data
             const currentRaffle = raffles.find((item) => item.name === name);
             const ticketsPreset = getTicketsPreset(currentRaffle.tickets);
