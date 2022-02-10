@@ -53,10 +53,7 @@ export default function Client() {
             history.push('/client/');
         };
 
-        if (clientActive) {
-            getClientData();
-            history.push({ path: location.pathname, search: `?address=${clientActive}` });
-        } else if (isSingleParcelPage) {
+        if (isSingleParcelPage && !clientActive) {
             const parsingArray = location.pathname.split('/client/realm/parcel/');
             const parcelId = parsingArray.length > 0 ? parseInt(parsingArray[parsingArray.length-1]) : null;
 
@@ -72,6 +69,9 @@ export default function Client() {
                         }
                     });
             }
+        } else if (clientActive) {
+            getClientData();
+            history.push({ path: location.pathname, search: `?address=${clientActive}` });
         } else {
             history.push({ path: location.pathname });
         }
