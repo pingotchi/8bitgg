@@ -18,6 +18,7 @@ import ClientGotchis from './routes/ClientGotchis';
 import ClientWarehouse from './routes/ClientWarehouse';
 import ClientTickets from './routes/ClientTickets';
 import ClientRealm from './routes/ClientRealm';
+import thegraph from '../../api/thegraph';
 
 export default function Client() {
     const classes = styles();
@@ -31,7 +32,7 @@ export default function Client() {
     const { clientActive, setClientActive, getClientData } = useContext(ClientContext);
 
     useEffect(() => {
-        if(activeAddress) {
+        if (activeAddress) {
             setClientActive(activeAddress);
         }
 
@@ -39,7 +40,7 @@ export default function Client() {
     }, [activeAddress]);
 
     useEffect(() => {
-        if(params.address) {
+        if (params.address) {
             setClientActive(params.address);
         }
 
@@ -47,9 +48,30 @@ export default function Client() {
     }, [params.address]);
 
     useEffect(() => {
-        if(clientActive) {
+        const isSingleParcelPage = location.pathname.indexOf('/client/realm/parcel/') !== -1;
+        const backToClient = () => {
+            history.push('/client/');
+        };
+
+        if (clientActive) {
             getClientData();
             history.push({ path: location.pathname, search: `?address=${clientActive}` });
+        } else if (isSingleParcelPage) {
+            const parsingArray = location.pathname.split('/client/realm/parcel/');
+            const parcelId = parsingArray.length > 0 ? parseInt(parsingArray[parsingArray.length-1]) : null;
+
+            if (isNaN(parcelId) || parcelId === null) {
+                backToClient();
+            } else {
+                thegraph.getRealmFromClientById(location.pathname.split('/client/realm/parcel/')[1])
+                    .then((response) => {
+                        if (!response) {
+                            backToClient();
+                        } else {
+                            history.push({path: location.pathname, search: `?address=${response.owner.id}`});
+                        }
+                    });
+            }
         } else {
             history.push({ path: location.pathname });
         }
