@@ -20,6 +20,5 @@ ghst_gg is the opensource, [gotchiverse](https://gotchiverse.io/) client focused
 
 ## Links
 
-* homepage: https://ghst.gg
 * ordenGG twitter: https://twitter.com/orden_gg
 * ordenGG discord: https://discord.gg/orden
