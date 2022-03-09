@@ -173,7 +173,7 @@ export default {
     },
 
     getGotchiQueries() {
-        const maxPossibleSkips = 5;
+        const maxPossibleSkips = 6;
         let queries = [];
 
         for (let i = 0; i < maxPossibleSkips; i++) {
