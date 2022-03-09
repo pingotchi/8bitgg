@@ -158,7 +158,7 @@ export default function ERC1155({children, item}) {
                                 ) : (
                                     <Typography variant='caption'>
                                         Sold for <Link 
-                                            href={`https://www.aavegotchi.com/baazaar/erc1155/${last.listing}`}
+                                            href={`https://app.aavegotchi.com/baazaar/erc1155/${last.listing}`}
                                             target='_blank'
                                             underline='none'
                                             className={classes.soldOutLink}
@@ -181,7 +181,7 @@ export default function ERC1155({children, item}) {
                                 </Typography>
                             ) : (
                                 <Link
-                                    href={`https://www.aavegotchi.com/baazaar/erc1155/${current.listing}`}
+                                    href={`https://app.aavegotchi.com/baazaar/erc1155/${current.listing}`}
                                     target='_blank'
                                     underline='none'
                                     className={classNames(classes.label, classes.labelTotal, 'baazarPrice')}
