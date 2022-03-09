@@ -20,11 +20,11 @@ export default function Footer() {
                 <div>
                     <span className={classes.highlight}>v0.31</span>
                     <span className={classes.footerCopyright}>
-                        ghst_gg is the <a href='https://github.com/orden-gg/ghst-gg' rel='noreferrer' target='_blank'>open-source</a>, <a href='https://www.aavegotchi.com/' rel='noreferrer' target='_blank'>gotchiverse</a> client focused on game {'&&'} market transparency. Developed by <a href='https://twitter.com/orden_gg' rel='noreferrer' target='_blank'>ordenGG</a> {'&'} contributors. 
+                        fireball.gg is the <a href='https://github.com/orden-gg/fireball' rel='noreferrer' target='_blank'>open-source</a>, <a href='https://www.aavegotchi.com/' rel='noreferrer' target='_blank'>gotchiverse</a> client focused on game {'&&'} market transparency. Developed by <a href='https://twitter.com/orden_gg' rel='noreferrer' target='_blank'>ordenGG</a> {'&'} contributors. 
                     </span>
                 </div>
                 <div className={classes.buttons}>
-                    <Button component={Link} size='small' href='https://simpleanalytics.com/ghst.gg' target='_blank'>[stats]</Button>
+                    <Button component={Link} size='small' href='https://simpleanalytics.com/fireball.gg' target='_blank'>[stats]</Button>
                     <MusicButton />
                 </div>
             </Toolbar>

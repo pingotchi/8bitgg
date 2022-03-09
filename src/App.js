@@ -47,7 +47,7 @@ export default function App() {
                     <ClientContextProvider>
 
                         <Helmet>
-                            <title>ghst_gg gotchiverse client</title>
+                            <title>fireball.gg gotchiverse client</title>
                         </Helmet>
 
                         <Wrapper className={classes.wrapper}>

@@ -21,11 +21,7 @@ const styles = makeStyles( theme => ({
         color: theme.palette.primary.main
     },
     logo: {
-        height: 80,
-        margin: -20,
-        marginRight: -10,
-        marginLeft: -10,
-
+        width: 20
     },
     logoText: {
         whiteSpace: 'nowrap',
@@ -34,8 +30,9 @@ const styles = makeStyles( theme => ({
     },
     logoWrapper: {
         display: 'inline-flex',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         justifyContent: 'center',
+        fontWeight: 700,
         color: theme.palette.text.primary,
         textDecoration: 'none',
         [theme.breakpoints.up('sm')]: {
