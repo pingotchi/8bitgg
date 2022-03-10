@@ -54,7 +54,7 @@ export default function BaazaarItem({item}) {
                         >
                             {item.quantity} listed by <Link
                             className={classes.quantityAndSeller}
-                            href={`https://aavegotchi.com/baazaar/owner/${item.seller}`}
+                            href={`https://app.aavegotchi.com/baazaar/owner/${item.seller}`}
                             target={'_blank'}
                             underline='none'
                         >

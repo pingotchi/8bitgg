@@ -66,7 +66,7 @@ export default function Aavegotchi({item}) {
                 <Grid item xs={5}>
                     <Button
                         target={'_blank'}
-                        href={'https://aavegotchi.com/baazaar/erc721/' + item.id}
+                        href={'https://app.aavegotchi.com/baazaar/erc721/' + item.id}
                         variant={'outlined'}
                         color={'primary'}
                         fullWidth

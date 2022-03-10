@@ -107,7 +107,7 @@ export default function ERC1155({children, item}) {
                                                     item.holders.map((holder, index) => {
                                                         return <span key={index}>
                                                         <Link
-                                                            href={`https://aavegotchi.com/gotchi/${holder}`}
+                                                            href={`https://app.aavegotchi.com/gotchi/${holder}`}
                                                             target='_blank'
                                                             underline='none'
                                                             className={classes.equippedTitleLink}

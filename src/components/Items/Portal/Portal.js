@@ -66,7 +66,7 @@ export default function Portal({portal}) {
 
             <Link
                 href={
-                    `https://aavegotchi.com/portal/${portal.tokenId}`
+                    `https://app.aavegotchi.com/portal/${portal.tokenId}`
                 }
                 target='_blank'
                 underline='none'

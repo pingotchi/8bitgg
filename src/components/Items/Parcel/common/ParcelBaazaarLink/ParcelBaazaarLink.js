@@ -27,7 +27,7 @@ export default function ParcelBaazaarLink({parcel, isBaazaarCard, link, text}) {
     return (
         <Link
             href={
-                isBaazaarCard ? `https://aavegotchi.com/baazaar/erc721/${link}` :
+                isBaazaarCard ? `https://app.aavegotchi.com/baazaar/erc721/${link}` :
                     `${window.location.origin}/client/realm/parcel/${parcel.tokenId}`
             }
             target={isBaazaarCard ? '_blank' : '_self'}

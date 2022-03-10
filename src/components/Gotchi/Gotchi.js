@@ -112,7 +112,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
             return (
                 <Link
                     className={classes.gotchiName}
-                    href={`https://aavegotchi.com/gotchi/${gotchi.id}`}
+                    href={`https://app.aavegotchi.com/gotchi/${gotchi.id}`}
                     target='_blank'
                     underline='none'
                     key={`${gotchi.id}-name`}
