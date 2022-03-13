@@ -15,6 +15,10 @@ export default {
         return Web3.utils.isAddress(address);
     },
 
+    fromWei(number) {
+        return Web3.utils.fromWei(number);
+    },
+
     async getInventoryByAddress(address) {
         try {
             let contractResponse;
@@ -51,6 +55,16 @@ export default {
         } catch (error) {
             console.log(error);
             return [];
+        }
+    },
+
+    async getAvailableSkillPoints(tokenId) {
+        try {
+            return await contract.methods.availableSkillPoints(tokenId).call()
+                .then((response) => response);
+        } catch (error) {
+            console.log(error);
+            return null;
         }
     },
 }
