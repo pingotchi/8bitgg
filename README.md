@@ -14,6 +14,9 @@ fireball.gg is the opensource, [gotchiverse](https://gotchiverse.io/) client foc
 * `yarn test`
 * `yarn audit`
 
+### review forked PR's
+* `git fetch origin pull/<PULL_ID>/head:<YOUR_BRANCH_NAME>`
+
 
 ## Links
 
