@@ -797,7 +797,7 @@ const guilds = [
             '0xfabd243f41cfaf4fe442e0f7740801151b747e44',
             '0xfbb073e09d84970d1efe099abbe9e626f8ff7024',
             '0xff3b5ec89aa8d54e0b4950ebeca56b039b07971a',
-],
+        ],
         description: [
             {
                 title: 'Description',
@@ -812,6 +812,7 @@ const guilds = [
                 text: 'nationalbank#6969'
             }
         ],
+        banner: '',
         socials: {
             website: 'https://y.at/%F0%9F%8F%A0%F0%9F%91%BB%F0%9F%9A%9C',
             twitter: 'https://twitter.com/gmdaogm',
