@@ -603,8 +603,7 @@ const guilds = [
             '0x6004ec8712b6d60c02D5812a46FFD7e17e7Ee41c',
             '0x8DF6a2DadfaC1009442430CA40F8479d206f7673',
             '0x7909759B82EB27aB3Cc886C5f3fCE3A72a565b39',
-            '0xC727Bff1962590C71A6CB56C6D11F37beE740A5D',
-            '0xBa00D625A28372a1C90DBa8A1d48EEEa9Bb495f7'
+            '0xC727Bff1962590C71A6CB56C6D11F37beE740A5D'
         ],
         description: [
             {
@@ -798,6 +797,7 @@ const guilds = [
             '0xfabd243f41cfaf4fe442e0f7740801151b747e44',
             '0xfbb073e09d84970d1efe099abbe9e626f8ff7024',
             '0xff3b5ec89aa8d54e0b4950ebeca56b039b07971a',
+            '0xBa00D625A28372a1C90DBa8A1d48EEEa9Bb495f7'
         ],
         description: [
             {
