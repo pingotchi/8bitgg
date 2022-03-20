@@ -64,12 +64,13 @@ export default function AutopetInfo() {
                 <CallMadeIcon className={classes.autopetInfoIcon} />
             </Link>
             <AutopetInfoCard
-                name='Fee staked'
+                name='Fee'
                 count={
                     totalStaked > 0 ? 
                     <>
-                        {fee}
+                        {fee} 
                         <img src={ghstIcon} alt='ghst icon' className={classes.autopetInfoGhst} />
+                        staked
                     </> : null
                 }
             />

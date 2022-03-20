@@ -23,12 +23,11 @@ export default function AutopetHeader() {
                 <div className={classes.autopetTermsBox}>
                     <h3 className={classes.autopetTermsTitle}>Which autopet to use?! </h3>
                     <Typography className={classes.autopetTermsText}>
-                        In gotchiverse, petting delegation can be used as a form of <span className={classes.autopetTermsTextHighlight}>diplomatic gameplay</span> and coordination mechanics. By petting with guild you paying minor membership fee and claiming your aavegotchi loyalty
+                        in gotchiverse, petting delegation can be used as a form of <span className={classes.autopetTermsTextHighlight}>diplomatic gameplay</span> and coordination mechanics. By petting with guild you paying minor membership fee and claiming your aavegotchi loyalty
                     </Typography>
                     {/* gm, add change credentials to your guild */}
                     <Typography className={classes.autopetTermsText}>
-                        <span className={classes.autopetTermsTextHighlight}>ordenGG</span> autopet adress is <span className={classes.autopetTermsTextHighlight}>0x715FB0175ebCa2802855D8AdCc93fd913EF60E93</span> and the code is 
-                        <span className={classes.autopetTermsTextHighlight}> open and verified o exlorer</span>
+                        <span className={classes.autopetTermsTextHighlight}>ordenGG</span> autopet address is <span className={classes.autopetTermsTextHighlight}>0x715FB0175ebCa2802855D8AdCc93fd913EF60E93</span> and the code is open and verified
                     </Typography>
                 </div>
             </div>
