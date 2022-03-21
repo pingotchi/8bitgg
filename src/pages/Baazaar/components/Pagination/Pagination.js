@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
+
 import { paginationStyles } from '../../styles';
 
-
-export default function Pagination({page, prevPageVisibility, nextPageVisibility, onNextPageClick, onPrevPageClick}) {
+export default function Pagination({ page, prevPageVisibility, nextPageVisibility, onNextPageClick, onPrevPageClick }) {
     const classes = paginationStyles();
 
     return (

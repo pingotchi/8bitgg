@@ -1,16 +1,16 @@
 import React from 'react';
-import { Grid, Box, Button, Link, Typography } from "@mui/material";
+import { Grid, Box, Button, Link, Typography } from '@mui/material';
+
 import classNames from 'classnames';
-import ghstIcon from '../../../../assets/images/ghsttoken.png';
-import itemUtils from '../../../../utils/itemUtils';
-import commonUtils from '../../../../utils/commonUtils';
-import Web3 from "web3";
+
+import ethersApi from 'api/ethers.api';
+import itemUtils from 'utils/itemUtils';
+import commonUtils from 'utils/commonUtils';
+import ghstIcon from 'assets/images/icons/ghst-token.png';
+
 import { baazaarItemStyles } from '../../styles';
 
-
-var web3 = new Web3();
-
-export default function BaazaarItem({item}) {
+export default function BaazaarItem({ item }) {
     const classes = baazaarItemStyles();
 
     return (
@@ -73,7 +73,7 @@ export default function BaazaarItem({item}) {
                             <Box className={classes.priceImg}><img src={ghstIcon} alt='GHST' /></Box>
                             <Box className={classes.priceText}>
                                 {
-                                    commonUtils.formatNumberWithCommas(commonUtils.trimPriceToThreeDecimal(web3.utils.fromWei(item.priceInWei)))
+                                    commonUtils.formatNumberWithCommas(commonUtils.trimPriceToThreeDecimal(ethersApi.fromWei(item.priceInWei)))
                                 }
                             </Box>
                         </Typography>

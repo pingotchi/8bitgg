@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link, Tooltip } from '@mui/material';
-
-import web3 from '../../api/web3';
-import commonUtils from '../../utils/commonUtils';
-import { GotchiListingStyles, CustomTooltipStyles } from './styles';
-
-import ghstIcon from '../../assets/images/ghst-doubleside.gif';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-export default function GotchiListing({id, listing, history}) {
+import ethersApi from 'api/ethers.api';
+import commonUtils from 'utils/commonUtils';
+import ghstIcon from 'assets/images/animated/ghst-token.gif';
+
+import { GotchiListingStyles, CustomTooltipStyles } from './styles';
+
+export default function GotchiListing({ listing, history }) {
     const classes = {
         ...GotchiListingStyles(),
         ...CustomTooltipStyles()
     };
 
-    const currentPrice = listing?.length && parseFloat(web3.fromWei(listing[0].priceInWei));
-    const lastPrice = history?.length && parseFloat(web3.fromWei(history[history.length - 1]));
+    const currentPrice = listing?.length && ethersApi.fromWei(listing[0].priceInWei);
+    const lastPrice = history?.length && ethersApi.fromWei(history[history.length - 1]);
 
-    if(!listing?.length && !history?.length) return null;
+    if (!listing?.length && !history?.length) return null;
 
     return (
         <div className={classes.container}>
@@ -31,7 +31,7 @@ export default function GotchiListing({id, listing, history}) {
                                 <div class={classes.tooltipInner}>
                                     {history.map((price, index) => {
                                         return <p class={classes.tooltipItem} key={index}>
-                                            {commonUtils.formatPrice(parseFloat(web3.fromWei(price)))}
+                                            {commonUtils.formatPrice(ethersApi.fromWei(price))}
                                             <img src={ghstIcon} width='14' alt='GHST Token Icon' />
                                             {index !== history.length - 1 && <span class={classes.tooltipDivider}>{'->'}</span>}
                                         </p>
@@ -69,12 +69,12 @@ export default function GotchiListing({id, listing, history}) {
                                     <p className={classes.lastPriceDown}>{commonUtils.formatPrice(currentPrice)}</p>
                                 </>
                             )}
-                            <img src={ghstIcon} width='18' alt='GHST Token Icon' />  
+                            <img src={ghstIcon} width='18' alt='GHST Token Icon' />
                         </Link>
                     ) : (
                         <div className={classes.listingShadow}>
                             <p className={classes.lastPrice}>{commonUtils.formatPrice(lastPrice)}</p>
-                            <img src={ghstIcon} width='18' alt='GHST Token Icon' />  
+                            <img src={ghstIcon} width='18' alt='GHST Token Icon' />
                         </div>
                     )}
                 </div>

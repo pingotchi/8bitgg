@@ -1,28 +1,26 @@
 import React from 'react';
 import { Link, Tooltip, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import CallMade from '@mui/icons-material/CallMade';
 import classNames from 'classnames';
-import styles, { CustomTooltipStyles } from './styles';
 
-import graphUtils from '../../utils/graphUtils';
+import HighlightNumber from 'components/HighlightNumber';
+import ShineLabel from 'components/Labels/ShineLabel';
+import graphUtils from 'utils/graphUtils';
+import commonUtils from 'utils/commonUtils';
+import itemUtils from 'utils/itemUtils';
+import ghstIcon from 'assets/images/animated/ghst-token.gif';
 
 import GotchiLevel from './GotchiLevel';
 import GotchiSkillPoints from './GotchiSkillPoints';
 import GotchiTraitsHighlight from './GotchiTraitsHighlight';
 import GotchiWearablesLine from './GotchiWearablesLine';
 import GotchiListing from './GotchiListing';
-import HighlightNumber from '../HighlightNumber';
 import GotchiSvg from './GotchiSvg';
 import GotchiSvgByStats from './GotchiSvgByStats';
+import styles, { CustomTooltipStyles } from './styles';
 
-import CallMade from '@mui/icons-material/CallMade';
-
-import ghstIcon from '../../assets/images/ghst-doubleside.gif';
-import ShineLabel from '../Labels/ShineLabel';
-import commonUtils from '../../utils/commonUtils';
-import itemUtils from '../../utils/itemUtils';
-
-export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, render, portal}) {
+export default function Gotchi({ gotchi, title, narrowed, renderSvgByStats, render, portal }) {
     const classes = {
         ...styles(),
         ...CustomTooltipStyles()
@@ -75,7 +73,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                     toNextLevel={gotchi.toNextLevel}
                     experience={gotchi.experience}
                     size={25}
-                    key={`${gotchi.id}-level`} 
+                    key={`${gotchi.id}-level`}
                 />
             )
         },
@@ -84,7 +82,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                 <GotchiSkillPoints
                     id={gotchi.id}
                     usedPoints={gotchi.usedSkillPoints}
-                    key={`${gotchi.id}-skillpoints`} 
+                    key={`${gotchi.id}-skillpoints`}
                 />
             )
         },
@@ -99,7 +97,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                                 <span className={classes.defaultVal}>
                                     ({gotchi.baseRarityScore})
                                 </span>
-                            </p>        
+                            </p>
                         </HighlightNumber>
                     </div>
 
@@ -107,7 +105,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                         <HighlightNumber type={calculateKinshipType(gotchi.kinship)}>
                             <p className={classes.mainVal}>
                                 🧡{gotchi.kinship}
-                            </p>        
+                            </p>
                         </HighlightNumber>
                     </div>
                 </div>
@@ -191,7 +189,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                                         {gotchi.rewardStats.map((item, index) => {
                                             return item.reward !== 0 ? (
                                                 <p key={index}>
-                                                    {item.name}[<span>{item.position}</span>] - 
+                                                    {item.name}[<span>{item.position}</span>] -
                                                     <span className={classes.rankReward}>
                                                         {commonUtils.formatPrice(item.reward)}
                                                         <img src={ghstIcon} width='14' alt='GHST Token Icon' />
@@ -212,7 +210,7 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
                                     🏆<Typography className={classes.rankRewardAmountNumber}>{commonUtils.formatPrice(gotchi.reward)}</Typography>🏆
                                 </Box>
                             </Tooltip>
-                                
+
                         ) : (
                             <div className={classes.rankStatus} key={`${gotchi.id}-rewards`}>
                                 <Typography className={classes.rankStatusText}>Unkranked</Typography>
@@ -235,21 +233,20 @@ export default function Gotchi({gotchi, title, narrowed, renderSvgByStats, rende
     };
 
     function renderSection(value) {
-
-        if(typeof value === 'string') return gotchiSections[value];
+        if (typeof value === 'string') return gotchiSections[value];
 
         return (
-            Object.keys(value).map( (key) => (
+            Object.keys(value).map((key) => (
                 gotchiSections[key](value[key].map( item => (
                     renderSection(item)
                 )))
             ))
         )
     }
-    
+
     return (
         <div className={classNames(classes.gotchi, `haunt${gotchi.hauntId}`, narrowed && 'narrowed' )}>
-            {render.map( (name) => {
+            {render.map((name) => {
                 return renderSection(name)
             })}
         </div>

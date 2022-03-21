@@ -1,22 +1,21 @@
 import React, {useContext} from 'react';
 import { Grid, Typography } from '@mui/material';
+
+import Wearable from 'components/Items/Wearable/Wearable';
+import Gotchi from 'components/Gotchi/Gotchi';
+import Portal from 'components/Items/Portal/Portal';
+import Ticket from 'components/Items/Ticket/Ticket';
+import Parcel from 'components/Items/Parcel/Parcel';
+import { BaazaarContext } from 'contexts/BaazaarContext';
+import {listingTypes} from 'data/types';
+
 import Pagination from '../Pagination/Pagination';
-import { BaazaarContext } from '../../../../contexts/BaazaarContext';
 import Aavegotchi from '../BaazaarSidebar/components/ItemTypes/Aavegotchi';
-import {listingTypes} from '../../../../data/types';
-
 import { baazaarSortingBodyStyles } from '../../styles';
-import Wearable from '../../../../components/Items/Wearable/Wearable';
-import Gotchi from '../../../../components/Gotchi/Gotchi';
-import Portal from '../../../../components/Items/Portal/Portal';
-import Ticket from '../../../../components/Items/Ticket/Ticket';
-import Parcel from '../../../../components/Items/Parcel/Parcel';
 
-export default function BaazaarSortingBody({goods, page, limit, onNextPageClick, onPrevPageClick}) {
+export default function BaazaarSortingBody({ goods, page, limit, onNextPageClick, onPrevPageClick }) {
     const classes = baazaarSortingBodyStyles();
-    const {selectedGoodsType} = useContext(BaazaarContext);
-
-    // debugger;
+    const { selectedGoodsType } = useContext(BaazaarContext);
 
     return (
         <Grid className={classes.baazaarBody} item xs={12} sm={12} md={9} lg={9} xl={10}>
@@ -56,7 +55,9 @@ export default function BaazaarSortingBody({goods, page, limit, onNextPageClick,
                         onNextPageClick={onNextPageClick}
                         onPrevPageClick={onPrevPageClick}
                     /> :
-                    <Typography className={classes.noGoods} variant={'caption'}>Spooky Market has no such goods :(</Typography>
+                    <Typography className={classes.noGoods} variant='caption'>
+                        Spooky Market has no such goods :(
+                    </Typography>
                 }
             </div>
         </Grid>

@@ -1,32 +1,29 @@
 
-import { alpha } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { alpha } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
-import mapSvg from '../../assets/images/svgs/map.svg';
-import listSvg from '../../assets/images/svgs/list.svg';
+import mapSvg from 'assets/images/icons/map.svg';
+import listSvg from 'assets/images/icons/list.svg';
 
 const keyframes = {
-
     move: {
-        '100%': { 
+        '100%': {
             transform: 'none'
         }
     },
     bounce: {
-        '50%': { 
+        '50%': {
             transform: 'translateY(-20%)'
         }
     },
     show: {
-        '100%': { 
+        '100%': {
             opacity: 1
         }
     }
-
 }
 
 const styles = makeStyles( theme => ({
-
     guildsWrapper: {
         position: 'relative',
         maxWidth: 1920,
@@ -142,7 +139,6 @@ const styles = makeStyles( theme => ({
 }));
 
 const guildStyles = makeStyles( theme => ({
-
     guildWrapper: {
         position: 'relative'
     },
@@ -161,7 +157,7 @@ const guildStyles = makeStyles( theme => ({
             left: theme.spacing(1),
             top: theme.spacing(.5),
         },
-        
+
         '& .MuiSvgIcon-root': {
             fontSize: 30,
             transition: 'translate .2s ease',
@@ -293,7 +289,7 @@ const guildBanner = makeStyles( theme => ({
         [theme.breakpoints.down('md')]: {
             maxHeight: 85
         },
-        
+
         '&.placeholder': {
             color: theme.palette.secondary.dark
         }
@@ -419,7 +415,7 @@ const guildDetailsStyles = makeStyles( theme => ({
             [theme.breakpoints.down('md')]: {
                 padding: theme.spacing(0, 1.5)
             },
-    
+
             [theme.breakpoints.down('sm')]: {
                 padding: theme.spacing(0, 1)
             }
@@ -537,7 +533,6 @@ const guildDetailsStyles = makeStyles( theme => ({
     detailText: {
         fontSize: 16,
         textAlign: 'center',
-
         [theme.breakpoints.down('md')]: {
             fontSize: 14
         }
@@ -689,7 +684,7 @@ const guildNavStyles = makeStyles( theme => ({
         height: 14,
         marginLeft: 8
     },
-    
+
     realmViewSwitch: {
         position: 'absolute',
         left: '100%',
@@ -734,10 +729,8 @@ const guildNavStyles = makeStyles( theme => ({
             borderRadius: 20 / 2
         },
         '& .Mui-checked+.MuiSwitch-track': {
-            // opacity: 1,
             backgroundColor: '#fff'
         },
-
         '.active + &': {
             marginLeft: theme.spacing(2),
             opacity: 1,

@@ -1,10 +1,7 @@
 import React from 'react';
 import { useTheme } from '@mui/material';
-
 import { alpha } from '@mui/system';
-
-
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from '@mui/styles';
 
 const styles = makeStyles( theme => ({
     box: {
@@ -13,7 +10,7 @@ const styles = makeStyles( theme => ({
     }
 }));
 
-export default function HighlightNumber({children, type}) {
+export default function HighlightNumber({ children, type }) {
     const classes = styles();
     const theme = useTheme();
 

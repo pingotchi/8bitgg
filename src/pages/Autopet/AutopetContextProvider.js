@@ -3,32 +3,31 @@ import { CircularProgress } from '@mui/material';
 
 import { useMetamask } from 'use-metamask';
 
-import { SnackbarContext } from '../../contexts/SnackbarContext';
-import { LoginContext } from '../../contexts/LoginContext';
-
-import ghstApi from '../../api/ghst.api';
-import mainApi from '../../api/main.api';
-import autopetApi from '../../api/autopet.api';
+import autopetApi from 'api/autopet.api';
+import ghstApi from 'api/ghst.api';
+import mainApi from 'api/main.api';
+import { SnackbarContext } from 'contexts/SnackbarContext';
+import { LoginContext } from 'contexts/LoginContext';
 
 import { tabStyles } from './styles';
 
 export const AutopetContext = createContext({});
 
 const AutopetContextProvider = (props) => {
-    const [ ghstState, setGhstState ] = useState('approve');
-    const [ petState, setPetState ] = useState('approve');
-    const [ stakeState, setStakeState ] = useState('approve');
-    const [ connectState, setConnectState ] = useState('approve');
+    const [ghstState, setGhstState] = useState('approve');
+    const [petState, setPetState] = useState('approve');
+    const [stakeState, setStakeState] = useState('approve');
+    const [connectState, setConnectState] = useState('approve');
 
-    const [ isPetApproved, setIsPetApproved ] = useState(false);
-    const [ isStaked, setIsStaked ] = useState(false);
-    const [ isGhstApproved, setIsGhstApproved ] = useState(false);
-    const [ isUserConnected, setIsUserConnected ] = useState(false);
-    const [ connectedWallet, setConnectedWallet ] = useState('');
-    
+    const [isPetApproved, setIsPetApproved] = useState(false);
+    const [isStaked, setIsStaked] = useState(false);
+    const [isGhstApproved, setIsGhstApproved] = useState(false);
+    const [isUserConnected, setIsUserConnected] = useState(false);
+    const [connectedWallet, setConnectedWallet] = useState('');
+
     const classes = tabStyles();
 
-    const [ tabs, setTabs ] = useState({
+    const [tabs, setTabs] = useState({
         connect: {
             text: 'Connect wallet',
             done: false
@@ -95,7 +94,7 @@ const AutopetContextProvider = (props) => {
         const errorMessage = approval ? 'GHST approval failed!' : 'Revoking GHST approval failed!';
 
         setGhstState('approving');
-        
+
         try {
             const isApproved = await ghstApi.approveGhst(approval);
 
@@ -106,7 +105,7 @@ const AutopetContextProvider = (props) => {
             } else {
                 showSnackbar('error', errorMessage);
             }
-            
+
             setGhstState('approve');
         } catch {
             setGhstState('approve');
@@ -118,7 +117,7 @@ const AutopetContextProvider = (props) => {
         const errorMessage = approval ? 'Staking failed!' : 'Unstaking failed!';
 
         setStakeState('approving');
-        
+
         try {
             const isApproved = Boolean(await autopetApi.subscribe(approval));
 
@@ -147,9 +146,9 @@ const AutopetContextProvider = (props) => {
 
     const renderButtonNode = (state, defaultNode, approvedNode) => {
         switch (state) {
-            case 'approved' : 
+            case 'approved' :
                 return approvedNode
-            case 'approving': 
+            case 'approving':
                 return (
                     <>
                         Approving <CircularProgress size={20} className={classes.panelButtonCitcular} />
@@ -169,7 +168,7 @@ const AutopetContextProvider = (props) => {
         if (accounts[0] === connectedWallet || !walletConnected) {
             return;
         }
-        
+
         const tabsDuplicated = { ...tabs };
         let ready = 0;
 
@@ -191,14 +190,14 @@ const AutopetContextProvider = (props) => {
             ++ready;
             updateTabs();
         });
-        
+
         ghstApi.isGhstApproved(accounts[0]).then(isApproved => {
             setIsGhstApproved(isApproved);
             tabsDuplicated.ghst.done = isApproved;
             ++ready;
             updateTabs();
         });
-        
+
         autopetApi.getUsers().then(users => {
             const isStaked = users.some(address => (
                 accounts[0].toLowerCase() === address.toLowerCase()
@@ -209,7 +208,7 @@ const AutopetContextProvider = (props) => {
             ++ready;
             updateTabs();
         });
-        
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [metaState]);
 

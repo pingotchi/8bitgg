@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-
-import SwipeableViews from 'react-swipeable-views';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -9,18 +7,17 @@ import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import DoneIcon from '@mui/icons-material/Done';
 import { Typography } from '@mui/material';
 
-import { AutopetContext } from '../../AutopetContextProvider';
-
-import { tabStyles } from '../../styles';
+import SwipeableViews from 'react-swipeable-views';
 import classNames from 'classnames';
+
+import { ReactComponent as Gotchi } from 'assets/images/gotchi-placeholder.svg'
 
 import PetPanel from './PetPanel';
 import GhstPanel from './GhstPanel';
 import StakePanel from './StakePanel';
 import ConnectPanel from './ConnectPanel';
-
-import { ReactComponent as Gotchi } from '../../../../assets/images/gotchi-placeholder.svg'
-
+import { AutopetContext } from '../../AutopetContextProvider';
+import { tabStyles } from '../../styles';
 
 export default function AutopetSteps() {
     const classes = tabStyles();
@@ -28,7 +25,7 @@ export default function AutopetSteps() {
     const { tabs } = useContext(AutopetContext);
     const [ currentTab, setCurrentTab ] = useState(0);
     const [ progress, setProgress ] = useState(0);
-    
+
     const a11yProps = (index) => {
       return {
         id: `full-width-tab-${index}`,
@@ -49,7 +46,7 @@ export default function AutopetSteps() {
             if (!tabs[key].done) {
                 setCurrentTab(index);
                 break;
-            } 
+            }
         }
 
         const completeCount = Object.keys(tabs).reduce(
@@ -73,16 +70,16 @@ export default function AutopetSteps() {
                         indicatorColor='primary'
                         textColor='inherit'
                         variant='fullWidth'
-                    >   
+                    >
                     {
                         Object.keys(tabs).map((key, index) => (
-                            <Tab 
+                            <Tab
                                 key={index}
                                 className={ classNames(classes.tab, tabs[key].done && classes.tabDone) }
                                 icon={
-                                    index === 0 ? null : 
+                                    index === 0 ? null :
                                     <DoubleArrowIcon className={classes.tabIcon} />
-                                } 
+                                }
                                 iconPosition='end'
                                 label={
                                     <>

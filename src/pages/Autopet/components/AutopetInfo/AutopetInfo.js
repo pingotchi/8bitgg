@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react';
-
 import { Link } from '@mui/material';
 import CallMadeIcon from '@mui/icons-material/CallMade';
 
 import classNames from 'classnames';
 
-import { infoStyles } from '../../styles';
-import AutopetInfoCard from './AutopetInfoCard';
-import autopetApi from '../../../../api/autopet.api';
-import thegraph from '../../../../api/thegraph';
+import autopetApi from 'api/autopet.api';
+import thegraph from 'api/thegraph.api';
+import ghstIcon from 'assets/images/animated/ghst-token.gif';
 
-import ghstIcon from '../../../../assets/images/ghst-doubleside.gif'
+import AutopetInfoCard from './AutopetInfoCard';
+import { infoStyles } from '../../styles';
 
 import { AUTOPET_CONTRACT } from '../../../../api/common/constants';
 import commonUtils from '../../../../utils/commonUtils';
 
 export default function AutopetInfo() {
     const classes = infoStyles();
-    const [ fee, setFee ] = useState(null);
-    const [ frens, setFrens ] = useState(null);
-    const [ totalStaked, setTotalStaked ] = useState(null);
-    const [ totalGotchis, setTotalGotchis ] = useState(null);
-    const [ totalUsers, setTotalUsers ] = useState(null);
+    const [fee, setFee] = useState(null);
+    const [frens, setFrens] = useState(null);
+    const [totalStaked, setTotalStaked] = useState(null);
+    const [totalGotchis, setTotalGotchis] = useState(null);
+    const [totalUsers, setTotalUsers] = useState(null);
 
     useEffect(() => {
         autopetApi.getUsers().then(users => {
@@ -50,11 +49,11 @@ export default function AutopetInfo() {
         <div
             className={classes.autopetInfo}
         >
-            <AutopetInfoCard 
+            <AutopetInfoCard
                 name='Gotchis'
                 count={totalGotchis}
             />
-            <AutopetInfoCard 
+            <AutopetInfoCard
                 name='Accounts'
                 count={totalUsers}
             />
@@ -69,12 +68,15 @@ export default function AutopetInfo() {
             <AutopetInfoCard
                 name='Fee'
                 count={
-                    fee === null ? null :
-                    <>
-                        {fee} 
-                        <img src={ghstIcon} alt='ghst icon' className={classes.autopetInfoGhst} />
-                        <span className={classes.autopetCardCountLabel}>staked</span>
-                    </>
+                    fee !== null ? (
+                        <>
+                            {fee}
+                            <img src={ghstIcon} alt='ghst icon' className={classes.autopetInfoGhst} />
+                            <span className={classes.autopetCardCountLabel}>staked</span>
+                        </>
+                    ) : (
+                        null
+                    )
                 }
             />
             <AutopetInfoCard
@@ -84,11 +86,14 @@ export default function AutopetInfo() {
             <AutopetInfoCard
                 name='Staked'
                 count={
-                    totalStaked === null ? null :
-                    <>
-                        {totalStaked}
-                        <img src={ghstIcon} alt='ghst icon' className={classes.autopetInfoGhst} />
-                    </> 
+                    totalStaked !== null ? (
+                        <>
+                            {totalStaked}
+                            <img src={ghstIcon} alt='ghst icon' className={classes.autopetInfoGhst} />
+                        </>
+                    ) : (
+                        null
+                    )
                 }
             />
         </div>

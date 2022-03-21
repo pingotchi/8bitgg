@@ -1,7 +1,10 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import { gql } from '@apollo/client';
 import fetch from 'cross-fetch';
-import graphUtils from '../utils/graphUtils';
+
+import ethersApi from './ethers.api';
+import graphUtils from 'utils/graphUtils';
+
 import {
     gotchiesQuery,
     svgQuery,
@@ -18,9 +21,6 @@ import {
     listedParcelQuery,
     getParcelHistoricalPricesQuery
 } from './common/queries';
-import Web3 from 'web3';
-
-const web3 = new Web3();
 
 const baseUrl = 'https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-core-matic';
 const raffle = 'https://api.thegraph.com/subgraphs/name/froid1911/aavegotchi-raffles';
@@ -173,7 +173,7 @@ export default {
     },
 
     getGotchiQueries() {
-        const maxPossibleSkips = 6;
+        const maxPossibleSkips = 6; // TODO: 12000 limitation per haunt
         let queries = [];
 
         for (let i = 0; i < maxPossibleSkips; i++) {
@@ -224,7 +224,7 @@ export default {
 
             return {
                 listing: erc1155[0]?.id || null,
-                price: erc1155[0]?.priceInWei ? +web3.utils.fromWei(erc1155[0].priceInWei) : 0,
+                price: erc1155[0]?.priceInWei ? +ethersApi.fromWei(erc1155[0].priceInWei) : 0,
                 lastSale: erc1155[0]?.timeLastPurchased || null
             };
         }).catch((error) => console.log(error));
@@ -264,12 +264,12 @@ export default {
 
             let merged = filtered.reduce((items, current) => {
                 let duplicated = items.find(item => item.ticketId === current.ticketId);
-    
-                if(duplicated) {
+
+                if (duplicated) {
                     duplicated.quantity = +duplicated.quantity + +current.quantity;
                     return items;
                 }
-    
+
                 return items.concat(current);
             }, []);
 
@@ -329,7 +329,7 @@ export default {
             return filterCombinedGraphData(response, ['parcels'], 'parcelId');
         });
     },
-    
+
     async getRealmByAddresses(addresses) {
 
         let allRealm = [];

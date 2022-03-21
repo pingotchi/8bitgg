@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, CircularProgress, Grid, Link, Typography } from '@mui/material';
-import classNames from 'classnames';
-import styles from "./styles";
-import { gotchiByIdQuery } from '../../../../api/common/queries';
-
-import hopeUp from '../../../../assets/images/avatars/hope_up.svg';
-import thegraph from '../../../../api/thegraph';
-import GotchiSvg from '../../../../components/Gotchi/GotchiSvg';
-import Subtitle from '../../../../components/Subtitle/Subtitle';
 import { Box } from '@mui/system';
+import classNames from 'classnames';
+
+import GotchiSvg from 'components/Gotchi/GotchiSvg';
+import Subtitle from 'components/Subtitle/Subtitle';
+import thegraph from 'api/thegraph.api';
+import { gotchiByIdQuery } from 'api/common/queries';
+import hopeUp from 'assets/images/gotchi-placeholder-up.svg';
+
+import styles from './styles';
 
 const gotchiesId = [4271, 8005, 4282, 23470, 13998];
 
@@ -17,7 +18,7 @@ export default function Team() {
     const [dataSpinner, setDataSpinner] = useState(true);
     const [members, setMembers] = useState([]);
 
-    useEffect( () => {
+    useEffect(() => {
         thegraph.getJoinedData([
             gotchiByIdQuery(gotchiesId[0]),
             gotchiByIdQuery(gotchiesId[1]),
@@ -41,11 +42,10 @@ export default function Team() {
             <Grid container justifyContent='center'>
                 <Grid item xs={12} md={10}>
                     <Subtitle variant='h4' innerBg='rgb(39, 42, 48)' margin='0 0 40px'>
-                        orden DAO
+                        ordenGG DAO
                     </Subtitle>
                 </Grid>
             </Grid>
-
 
             <Grid container justifyContent='center'>
                 {dataSpinner ? (

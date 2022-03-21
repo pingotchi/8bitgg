@@ -1,5 +1,4 @@
 import { alpha } from '@mui/system';
-
 import { makeStyles } from '@mui/styles';
 
 const styles = makeStyles( theme => ({
@@ -8,7 +7,7 @@ const styles = makeStyles( theme => ({
         width: 'calc(100vw + 24px)'
     },
     backdrop: {
-        zIndex: theme.zIndex.drawer + 1,
+        zIndex: theme.zIndex.appBar - 1,
         color: '#fff'
     }
 }));
