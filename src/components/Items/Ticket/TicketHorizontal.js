@@ -1,15 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './../styles';
-// parts
-import HorizontalPrice from "../common/HorizontalPrice/HorizontalPrice";
-import HorizontalLink from "../common/HorizontalLink/HorizontalLink";
-import TicketImage from "./common/TicketImage";
-import CardName from "../common/CardName/CardName";
-import itemUtils from "../../../utils/itemUtils";
-import CardStats from "../common/CardStats/CardStats";
 
-export default function TicketHorizontal({ticket, render}) {
+import itemUtils from 'utils/itemUtils';
+
+import TicketImage from './common/TicketImage';
+import HorizontalPrice from '../common/HorizontalPrice/HorizontalPrice';
+import HorizontalLink from '../common/HorizontalLink/HorizontalLink';
+import CardName from '../common/CardName/CardName';
+import CardStats from '../common/CardStats/CardStats';
+
+import styles from './../styles';
+
+export default function TicketHorizontal({ ticket, render }) {
     const classes = styles();
     const additionalClass = 'horizontal';
 
@@ -22,7 +24,7 @@ export default function TicketHorizontal({ticket, render}) {
         // body
         get body() {
             return <div style={{'width': '70%'}} key={`${ticket.id}-ticket-body`}>
-                <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
+                <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': 'space-around', 'paddingTop': '30px'}}>
                     <div>
                         <CardName itemName={`${ticket.name || itemUtils.getItemRarityName(ticket.erc1155TypeId)} ticket`}
                                   itemRarity={itemUtils.getItemRarityName(ticket.erc1155TypeId)} item={ticket} />
@@ -54,7 +56,7 @@ export default function TicketHorizontal({ticket, render}) {
             ))
         )
     }
-    
+
     return (
         <div className={classNames(classes.horizontalCard, ticket.rarity || 'common')}>
             {render.map( (name) => {

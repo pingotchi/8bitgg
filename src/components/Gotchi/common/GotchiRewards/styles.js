@@ -1,47 +1,44 @@
-import { makeStyles } from "@mui/styles";
-import {alpha} from "@mui/system";
+import { makeStyles } from '@mui/styles';
+import { alpha } from '@mui/system';
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     rankBox: {
-        display: 'flex',
-        justifyContent: 'flex-end'
-    },
-    rankReward: {
-        display: 'inline-flex',
-        alignItems: 'center',
-        color: 'primary.main'
-    },
-    customTooltip: {
-        backgroundColor: theme.palette.secondary.dark,
-        marginBottom: 8
-    },
-    rankRewardAmount: {
-        display:'inline-flex',
-        alignItems:'center',
-        justifyContent:'center',
-        padding:'3px 2px 3px 8px',
-        position:'relative',
-        bottom:-8,
-        right:-8,
-        backgroundColor: alpha(theme.palette.secondary.dark, .5)
-    },
-    rankRewardAmountNumber: {
-        fontSize: 14,
-        fontWeight: 600
+        position: 'absolute',
+        bottom: 0,
+        left: 0
     },
     rankStatus: {
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '3px 8px',
+        padding: '2px 8px',
         position: 'relative',
-        bottom: -8,
-        right: -8,
         bgcolor: alpha(theme.palette.secondary.dark, .5)
+    },
+    rankReward: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        marginLeft: 6
     },
     rankStatusText: {
         color: theme.palette.warning.main,
         fontSize: 14,
         fontWeight: 600
+    },
+    rankRewardAmount: {
+        display:'inline-flex',
+        alignItems:'center',
+        justifyContent:'center',
+        padding:'2px 2px 2px 8px',
+        position:'relative',
+        backgroundColor: alpha(theme.palette.primary.main, .2),
+        fontSize: 12,
+        textShadow: `1px 1px 0 ${alpha(theme.palette.secondary.main, .8)}`
+    },
+    rankRewardAmountNumber: {
+        fontSize: 14,
+        fontWeight: 600,
+        lineHeight: 1.43,
+        margin: '0 2px'
     }
 }));

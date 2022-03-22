@@ -1,11 +1,10 @@
 import { alpha } from '@mui/system';
+import { makeStyles } from '@mui/styles';
 
-import { makeStyles } from "@mui/styles";
+import mapSvg from 'assets/images/icons/map.svg';
+import listSvg from 'assets/images/icons/list.svg';
 
-import mapSvg from '../../assets/images/svgs/map.svg';
-import listSvg from '../../assets/images/svgs/list.svg';
-
-const styles = makeStyles( theme => ({
+const styles = makeStyles(theme => ({
     container: {
         padding: theme.spacing(3),
         display: 'flex',
@@ -36,15 +35,7 @@ const styles = makeStyles( theme => ({
     }
 }));
 
-const routersStyles = makeStyles( theme => ({
-    // backdrop: {
-    //     zIndex: theme.zIndex.appBar - 1,
-    //     color: '#fff'
-    // },
-    // textHighlight: {
-    //     color: theme.palette.primary.main,
-    //     marginLeft: 10
-    // },
+const routersStyles = makeStyles(theme => ({
     list: {
         display: 'grid',
         alignItems: 'start',
@@ -96,7 +87,7 @@ const routersStyles = makeStyles( theme => ({
     },
 }));
 
-const clientNavStyles = makeStyles( theme => ({
+const clientNavStyles = makeStyles(theme => ({
     container: {
         margin: theme.spacing(1, 0),
         display: 'flex',
@@ -139,15 +130,12 @@ const clientNavStyles = makeStyles( theme => ({
         fontWeight: 600,
         color: theme.palette.primary.main,
         marginLeft: 8,
-
         '.Mui-disabled &': {
             opacity: .4
         },
-
         '.active &, .active:hover &': {
             color: theme.palette.secondary.main
         },
-
         'Mui-disabled.active &, Mui-disabled.active:hover &': {
             color: theme.palette.primary.main
         }
@@ -157,7 +145,6 @@ const clientNavStyles = makeStyles( theme => ({
         height: 14,
         marginLeft: 8
     },
-    
     realmViewSwitch: {
         position: 'absolute',
         left: '100%',
@@ -214,15 +201,17 @@ const clientNavStyles = makeStyles( theme => ({
     }
 }));
 
-const loadRewardsStyles = makeStyles( theme => ({
-    
+const loadRewardsStyles = makeStyles(theme => ({
     loadWrapper: {
         display: 'flex',
         alignItems: 'center',
         marginLeft: 16
     },
     loadButton: {
-        marginRight: '16px'
+        marginRight: '16px',
+        paddingRight: '24px !important',
+        position: 'relative',
+        overflow: 'hidden'
     },
     loadReward: {
         display: 'inline-flex',
@@ -233,6 +222,135 @@ const loadRewardsStyles = makeStyles( theme => ({
         alignItems: 'center',
         fontSize: '16px',
         marginLeft: '4px'
+    },
+    loadLabel: {
+        position: 'absolute',
+        top: 0,
+        right: 15,
+        transform: 'rotate(-90deg)',
+        transformOrigin: 'top right',
+        fontSize: 10,
+        fontWeight: 700,
+        background: theme.palette.error.main,
+        pointerEvents: 'none',
+        borderRadius: '0 0 2px 2px',
+        margin: 0,
+        lineHeight: 1,
+        padding: '3px 4px 2px',
+        color: '#000'
+    }
+}));
+
+const parcelSinglePage = makeStyles(theme => ({
+    name: {
+        fontWeight: '500',
+        lineHeight: '1.4',
+        textTransform: 'capitalize',
+        textShadow: `${theme.palette.secondary.dark} 2px 2px 0px',
+                    ${theme.palette.secondary.main} -1px -1px 0px',
+                    ${theme.palette.secondary.main} 1px -1px 0px',
+                    ${theme.palette.secondary.main} -1px 1px 0px',
+                    ${theme.palette.secondary.main} 1px 1px 0px`,
+
+        '.tooltip-wearable &': { // name
+            fontSize: 14
+        },
+    },
+    parcelInfoContainer: {
+        maxWidth: 300
+    },
+    parcelInfoWrap: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'flex',
+            justifyContent: 'center'
+        }
+    },
+    parcelImageContainer: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        '& > canvas': {
+            maxWidth: '100%'
+        },
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'center'
+        }
+    },
+    parcelWrapContainer: {
+        paddingTop: 30
+    },
+    notListedInBaazaar: {
+        margin: '15px 0',
+        padding: 20,
+        border: `1px solid ${alpha(theme.palette.primary.main, .3)}`,
+    },
+    ownerLink: {
+        margin: '15px 0',
+        '& > a': {
+            color: theme.palette.primary.main
+        },
+        '& > a:hover': {
+            textDecoration: 'underline'
+        }
+    },
+    parcelTransactions: {
+        display: 'flex',
+        justifyContent: 'center',
+        '& > ul': {
+            maxWidth: 650,
+            width: '100%'
+        },
+        [theme.breakpoints.up('xs')]: {
+            padding: '20px 0 0 48px',
+        }
+    },
+    parcelTransactionsWrapper: {
+        height: 'max-content'
+    },
+    parcelTransactionsItem: {
+        height: '100%',
+        width: '100%',
+        border: `1px solid ${alpha(theme.palette.primary.main, .3)}`
+    },
+    reserveTitle: {
+        display: 'none',
+        [theme.breakpoints.down('sm')]: {
+            display: 'inline'
+        }
+    },
+    parcelTransactionsItemHead: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+        }
+    },
+    parcelTransactionsItemInner: {
+        margin: 'auto',
+        padding: 10
+    },
+    priceIcon: {
+        width: 15
+    },
+    address: {
+        color: theme.palette.primary.main,
+        '&:hover': {
+            textDecoration: 'underline'
+        }
+    },
+    noContent: {
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'center',
+        paddingTop: 50
+    },
+    alchemicaImg: {
+        width: 20
+    },
+    alchemicaContainer:{
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: 10,
+        '& img': {
+            marginRight: 10
+        }
     }
 }));
 
@@ -240,6 +358,6 @@ export {
     styles as default,
     clientNavStyles,
     routersStyles,
-
-    loadRewardsStyles
+    loadRewardsStyles,
+    parcelSinglePage
 };

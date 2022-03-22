@@ -1,16 +1,17 @@
 import React from 'react';
-import styles from "./styles";
-import {Link} from "@mui/material";
-import CallMade from "@mui/icons-material/CallMade";
-import classNames from "classnames";
+import { Link } from '@mui/material';
+import CallMade from '@mui/icons-material/CallMade';
+import classNames from 'classnames';
 
-export default function GotchiName({gotchi, additionalClass}) {
+import styles from './styles';
+
+export default function GotchiName({ gotchi, additionalClass }) {
     const classes = styles();
 
     return (
         <Link
             className={classNames(classes.gotchiName, additionalClass)}
-            href={`https://aavegotchi.com/gotchi/${gotchi.id}`}
+            href={`https://app.aavegotchi.com/gotchi/${gotchi.id}`}
             target='_blank'
             underline='none'
         >

@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from "./styles";
-import {Tooltip} from "@mui/material";
 
-export default function GotchiId({gotchi, title}) {
+import { Tooltip } from '@mui/material';
+
+import styles from './styles';
+
+export default function GotchiId({ gotchi, title }) {
     const classes = styles();
 
     return (

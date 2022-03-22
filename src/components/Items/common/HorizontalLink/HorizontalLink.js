@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from "./styles";
-import {Link} from "@mui/material";
-import CallMade from "@mui/icons-material/CallMade";
-import classNames from "classnames";
+import { Link } from '@mui/material';
+import CallMade from '@mui/icons-material/CallMade';
+import classNames from 'classnames';
 
-export default function HorizontalLink({item, name, url, additionalClass}) {
+import styles from './styles';
+
+export default function HorizontalLink({ item, name, url, additionalClass }) {
     const classes = styles();
 
     return (

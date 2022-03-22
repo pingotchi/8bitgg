@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from "./styles";
-import graphUtils from "../../../../utils/graphUtils";
-import {Tooltip} from "@mui/material";
+import { Tooltip } from '@mui/material';
 
-export default function GotchiCollateral({gotchi}) {
+import graphUtils from 'utils/graphUtils';
+
+import styles from './styles';
+
+export default function GotchiCollateral({ gotchi }) {
     const classes = styles();
     const collateral = graphUtils.getCollateralName(gotchi.collateral);
 

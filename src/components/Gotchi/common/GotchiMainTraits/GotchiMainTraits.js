@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from "./styles";
-import classNames from "classnames";
-import HighlightNumber from "../../../HighlightNumber";
+import classNames from 'classnames';
 
-export default function GotchiMainTraits({gotchi}) {
+import HighlightNumber from 'components/HighlightNumber';
+
+import styles from './styles';
+
+export default function GotchiMainTraits({ gotchi }) {
     const classes = styles();
 
     const calculateRarityType = (rarity) => {

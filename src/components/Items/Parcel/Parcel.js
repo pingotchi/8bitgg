@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Tooltip, Typography } from '@mui/material';
-
-import { useTheme } from '@emotion/react';
+import { Tooltip, Typography } from '@mui/material';
 import { alpha } from '@mui/system';
+import { useTheme } from '@emotion/react';
+
 import classNames from 'classnames';
+import ContentLoader from 'react-content-loader';
+
+import ethersApi from 'api/ethers.api';
+import thegraph from 'api/thegraph.api';
+import ParcelImage from 'components/Items/ParcelImage/ParcelImage';
+import commonUtils from 'utils/commonUtils';
+import itemUtils from 'utils/itemUtils';
+import ghstIcon from 'assets/images/animated/ghst-token.gif';
+
+import ParcelBaazaarLink from './common/ParcelBaazaarLink/ParcelBaazaarLink';
 import { ERC1155InnerStyles, tooltipStyles, itemStyles, parselStyles } from '../styles';
 
-import ContentLoader from 'react-content-loader';
-import thegraph from '../../../api/thegraph';
-import itemUtils from '../../../utils/itemUtils';
-
-
-import CallMade from '@mui/icons-material/CallMade';
-import ghstIcon from '../../../assets/images/ghst-doubleside.gif';
-import commonUtils from '../../../utils/commonUtils';
-import Web3 from "web3";
-import ParcelImage from "../ParcelImage/ParcelImage";
-
-var web3 = new Web3();
-
-export default function Parcel({parcel, isBaazaarCard}) {
+export default function Parcel({ parcel, isBaazaarCard }) {
     const classes = {
         ...itemStyles(),
         ...ERC1155InnerStyles(),
@@ -31,7 +28,7 @@ export default function Parcel({parcel, isBaazaarCard}) {
     const [current, setCurrent] = useState(null);
 
     const size = itemUtils.getParcelSize(parcel.size);
-    const name = parcel.parcelHash.replace(/-/g, ' ');
+
     const boosts = {
         fud: parcel.fudBoost,
         fomo: parcel.fomoBoost,
@@ -44,7 +41,7 @@ export default function Parcel({parcel, isBaazaarCard}) {
 
         // current
         thegraph.getRealmAuctionPrice(parcel.auctionId).then((response) => {
-            if(!controller.signal.aborted) {
+            if (!controller.signal.aborted) {
                 setCurrent(response);
             }
         });
@@ -63,7 +60,7 @@ export default function Parcel({parcel, isBaazaarCard}) {
                             <Typography variant='subtitle2'>
                                 {
                                     isBaazaarCard ? commonUtils.formatPrice(
-                                            parseFloat(web3.utils.fromWei(parcel.priceInWei))
+                                            ethersApi.fromWei(parcel.priceInWei)
                                         ) :
                                         commonUtils.formatPrice(current.price)
                                 }
@@ -99,26 +96,13 @@ export default function Parcel({parcel, isBaazaarCard}) {
                 </Tooltip>
             </div>
 
-            <ParcelImage key={parcel.parcelId} parcel={parcel} />
+            <ParcelImage key={parcel.parcelId} parcel={parcel} parcelSize={100} />
 
             <div className={classNames(classes.label, classes.labelSlot)}>
                 [{parcel.tokenId}]
             </div>
 
-            <Link
-                href={
-                    isBaazaarCard ? `https://aavegotchi.com/baazaar/erc721/${parcel.baazaarId}` :
-                    `https://gotchiverse.io/auction?tokenId=${parcel.tokenId}`
-                }
-                target='_blank'
-                underline='none'
-                className={classNames(classes.nameWrapper, 'two-lined')}
-            >
-                <Typography className={classNames(classes.name, classes.textHighlight, size)}>
-                    {name}
-                </Typography>
-                <CallMade className={classes.callMadeIcon} />
-            </Link>
+            <ParcelBaazaarLink parcel={parcel} isBaazaarCard={isBaazaarCard} link={parcel.baazaarId} />
 
             <div className={classes.boosts}>
                 {Object.entries(boosts).map((boost, i) => {

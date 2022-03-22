@@ -1,7 +1,7 @@
-import { makeStyles } from "@mui/styles";
-import {alpha} from "@mui/system";
+import { makeStyles } from '@mui/styles';
+import { alpha } from '@mui/system';
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     gotchiName: {
         display: 'block',
         backgroundColor: alpha(theme.palette.secondary.dark, .3),

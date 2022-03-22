@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './../styles';
-// parts
-import HorizontalPrice from "../common/HorizontalPrice/HorizontalPrice";
-import HorizontalLink from "../common/HorizontalLink/HorizontalLink";
-import PortalImage from "./common/PortalImage";
-import CardName from "../common/CardName/CardName";
-import CardStats from "../common/CardStats/CardStats";
 
-export default function PortalHorizontal({portal, render}) {
+import PortalImage from './common/PortalImage';
+import CardName from '../common/CardName/CardName';
+import CardStats from '../common/CardStats/CardStats';
+import HorizontalPrice from '../common/HorizontalPrice/HorizontalPrice';
+import HorizontalLink from '../common/HorizontalLink/HorizontalLink';
+import styles from './../styles';
+
+export default function PortalHorizontal({ portal, render }) {
     const classes = styles();
     const additionalClass = 'horizontal';
 
@@ -21,7 +21,7 @@ export default function PortalHorizontal({portal, render}) {
         // body
         get body() {
             return <div style={{'width': '70%'}} key={`${portal.id}-portal-body`}>
-                <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
+                <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': 'space-around', 'paddingTop': '30px'}}>
                     <div>
                         <CardName itemName={`Portal ${portal.tokenId}`} itemRarity={'none'} item={portal} />
                     </div>
@@ -52,7 +52,7 @@ export default function PortalHorizontal({portal, render}) {
             ))
         )
     }
-    
+
     return (
         <div className={classNames(classes.horizontalCard, portal.rarity || 'common')}>
             {render.map( (name) => {

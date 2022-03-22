@@ -1,9 +1,11 @@
 import React from 'react';
-import { ERC1155InnerStyles } from "../../styles";
-import itemUtils from "../../../../utils/itemUtils";
-import classNames from "classnames";
+import classNames from 'classnames';
 
-export default function ConsumableImg({consumable, additionalClass}) {
+import itemUtils from 'utils/itemUtils';
+
+import { ERC1155InnerStyles } from '../../styles';
+
+export default function ConsumableImg({ consumable, additionalClass }) {
     const classes = ERC1155InnerStyles();
 
     return (
@@ -11,6 +13,7 @@ export default function ConsumableImg({consumable, additionalClass}) {
             <img
                 src={itemUtils.getWearableImg(consumable.id || consumable.erc1155TypeId)}
                 className={classes.icon}
+                alt='consumable'
             />
         </div>
     );

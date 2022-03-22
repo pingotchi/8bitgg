@@ -1,17 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './styles';
+
+import GotchiId from './common/GotchiId/GotchiId';
+import GotchiCollateral from './common/GotchiCollateral/GotchiCollateral';
+import GotchiMainTraits from './common/GotchiMainTraits/GotchiMainTraits';
+import GotchiName from './common/GotchiName/GotchiName';
+import GotchiSVG from './common/GotchiSVG/GotchiSVG';
 import GotchiLevel from './GotchiLevel';
 import GotchiTraitsHighlight from './GotchiTraitsHighlight';
-// parts
-import GotchiId from "./common/GotchiId/GotchiId";
-import GotchiCollateral from "./common/GotchiCollateral/GotchiCollateral";
-import GotchiMainTraits from "./common/GotchiMainTraits/GotchiMainTraits";
-import GotchiName from "./common/GotchiName/GotchiName";
-import GotchiSVG from "./common/GotchiSVG/GotchiSVG";
-import HorizontalPrice from "../Items/common/HorizontalPrice/HorizontalPrice";
+import HorizontalPrice from '../Items/common/HorizontalPrice/HorizontalPrice';
+import styles from './styles';
 
-export default function GotchiHorizontal({gotchi, item, title, narrowed, renderSvgByStats, render}) {
+export default function GotchiHorizontal({ gotchi, item, title, narrowed, renderSvgByStats, render }) {
     const classes = styles();
     const additionalClass = 'horizontal';
 
@@ -71,7 +71,6 @@ export default function GotchiHorizontal({gotchi, item, title, narrowed, renderS
     }
 
     function renderSection(value) {
-
         if (typeof value === 'string') return gotchiSections[value];
 
         return (
@@ -82,7 +81,7 @@ export default function GotchiHorizontal({gotchi, item, title, narrowed, renderS
             ))
         )
     }
-    
+
     return (
         <div className={classNames(classes.gotchi, `haunt${gotchi.hauntId}`, narrowed && 'narrowed', 'horizontal')}>
             {render.map( (name) => {

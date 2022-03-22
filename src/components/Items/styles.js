@@ -1,8 +1,7 @@
 import { alpha } from '@mui/system';
+import { makeStyles } from '@mui/styles';
 
-import { makeStyles } from "@mui/styles";
-
-const styles = makeStyles( theme => ({
+const styles = makeStyles(theme => ({
     soldOutLink: {
         color: theme.palette.primary.main,
         fontWeight: 600
@@ -46,7 +45,7 @@ const styles = makeStyles( theme => ({
     },
     equippedTitleLink: {
         color: theme.palette.primary.main,
-        fontWeight: 600 
+        fontWeight: 600
     },
     itemBalancxeDivider: {
         margin: '0 2px'
@@ -94,13 +93,13 @@ const styles = makeStyles( theme => ({
     }
 }));
 
-const itemStyles = makeStyles( theme => ({
+const itemStyles = makeStyles(theme => ({
     item: {
         borderRadius: theme.shape.borderRadius,
         backgroundColor: theme.palette.secondary.dark,
         padding: '32px 12px 36px',
         textAlign: 'center',
-        height: '100%',
+        minHeight: '100%',
         position: 'relative',
         '&.common': {
             backgroundColor: alpha(theme.palette.rarity.common, .1)
@@ -135,6 +134,9 @@ const itemStyles = makeStyles( theme => ({
         '&.partner': {
             backgroundColor: alpha(theme.palette.realm.partner, .15)
         },
+        '&.realm-generic': {
+            backgroundColor: alpha('#c1a415', 0.15)
+        },
         '&:hover .labelSlot': {
             opacity: .7,
         }
@@ -157,21 +159,21 @@ const itemStyles = makeStyles( theme => ({
             maxWidth: 100,
             maxHeight: 100
         }
+    },
+    itemBalanceDivider: {
+        margin: '0 2px'
     }
 }));
 
-const tooltipStyles = makeStyles( theme => ({
-
+const tooltipStyles = makeStyles(theme => ({
     tooltip: {
         padding: '16px 12px 12px',
         backgroundColor: 'transparent',
     },
-
     customTooltip: {
         backgroundColor: `${theme.palette.secondary.dark}`,
         marginBottom: 8
     },
-
     labels: {
         position: 'absolute',
         top: 0,
@@ -248,6 +250,10 @@ const tooltipStyles = makeStyles( theme => ({
         '.godlike &': {
             backgroundColor: theme.palette.rarity.godlike,
             color: theme.palette.secondary.main
+        },
+        '.drop &': {
+            backgroundColor: theme.palette.customColors.lightGray,
+            color: theme.palette.secondary.main
         }
     },
     labelBalance: {
@@ -260,14 +266,14 @@ const tooltipStyles = makeStyles( theme => ({
     }
 }));
 
-const ERC1155InnerStyles = makeStyles( theme => ({
+const ERC1155InnerStyles = makeStyles(theme => ({
     iconWrapper: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '65%',
+        minHeight: '100px',
         marginBottom: 4,
-        
+
         '.tooltip-wearable &': { // iconWrapper
             minHeight: 60
         },
@@ -276,7 +282,6 @@ const ERC1155InnerStyles = makeStyles( theme => ({
             height: 150
         }
     },
-
     icon: {
         width: '60%',
         maxHeight: 80,
@@ -302,6 +307,7 @@ const ERC1155InnerStyles = makeStyles( theme => ({
             alignItems: 'center',
             justifyContent: 'center',
             transition: 'all .2s ease-in-out',
+            minWidth: '100%',
             '&:hover': {
                 backgroundColor: alpha(theme.palette.secondary.dark, .5),
             }
@@ -316,7 +322,7 @@ const ERC1155InnerStyles = makeStyles( theme => ({
                     ${theme.palette.secondary.main} 1px -1px 0px',
                     ${theme.palette.secondary.main} -1px 1px 0px',
                     ${theme.palette.secondary.main} 1px 1px 0px`,
-    
+
         '.tooltip-wearable &': { // name
             fontSize: 14
         },
@@ -352,17 +358,20 @@ const ERC1155InnerStyles = makeStyles( theme => ({
         '&.partner': {
             color: theme.palette.realm.partner
         },
+        '&.realm-generic': {
+            color: '#c1a415'
+        },
     },
     stats: {
         fontWeight: '500',
-        
+
         '.tooltip-wearable &': { // stats
             fontSize: 13
         }
     },
 }));
 
-const parselStyles = makeStyles( theme => ({
+const parselStyles = makeStyles(theme => ({
     boosts: {
         position: 'absolute',
         bottom: 0,
@@ -425,10 +434,17 @@ const parselStyles = makeStyles( theme => ({
         '.specions &': {
             backgroundColor: theme.palette.realm.specions
         }
+    },
+    size: {
+        position: 'absolute',
+        right: 4,
+        bottom: 4,
+        fontSize: 10,
+        opacity: .8
     }
 }));
 
-const portalStyles = makeStyles( theme => ({
+const portalStyles = makeStyles(theme => ({
     portalImage: {
         width: 100,
         marginTop: 10

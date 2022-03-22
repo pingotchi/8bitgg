@@ -1,7 +1,7 @@
-import { makeStyles } from "@mui/styles";
-import {alpha} from "@mui/system";
+import { makeStyles } from '@mui/styles';
+import {alpha} from '@mui/system';
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     linkName: {
         display: 'block',
         backgroundColor: alpha(theme.palette.secondary.dark, .3),
@@ -11,7 +11,7 @@ export default makeStyles( theme => ({
         margin: '0 -8px',
         position: 'relative',
         transition: 'all .2s ease-in-out',
-        textAlign: "center",
+        textAlign: 'center',
 
         '&:hover': {
             textDecoration: 'none',

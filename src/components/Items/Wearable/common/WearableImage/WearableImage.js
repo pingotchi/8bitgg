@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from "./styles";
-import itemUtils from "../../../../../utils/itemUtils";
 
-export default function WearableImage({wearable}) {
+import itemUtils from 'utils/itemUtils';
+
+import styles from './styles';
+
+export default function WearableImage({ wearable }) {
     const classes = styles();
     const name = itemUtils.getItemNameById(wearable.id || wearable.erc1155TypeId);
 

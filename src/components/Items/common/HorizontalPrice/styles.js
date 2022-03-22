@@ -1,7 +1,6 @@
-import { makeStyles } from "@mui/styles";
-import {alpha} from "@mui/system";
+import { makeStyles } from '@mui/styles';
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     priceRoot: {
         '& img': {
             width: 25

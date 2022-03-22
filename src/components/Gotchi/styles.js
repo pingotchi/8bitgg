@@ -1,9 +1,7 @@
 import { alpha } from '@mui/system';
+import { makeStyles } from '@mui/styles';
 
-import { makeStyles } from "@mui/styles";
-import {global} from "@apollo/client/utilities/globals";
-
-const styles = makeStyles( theme => ({
+const styles = makeStyles(theme => ({
     gotchi: {
         display: 'block',
         borderRadius: theme.shape.borderRadius,
@@ -50,6 +48,17 @@ const styles = makeStyles( theme => ({
             padding: 0,
             marginTop: 5
         }
+    },
+    gotchiSvgPortal: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        left: 0,
+        opacity: .5
+    },
+    gotchiSvgInner: {
+        position: 'relative',
+        zIndex: 1
     },
     gotchiSetName: {
         position: 'absolute',
@@ -124,7 +133,7 @@ const styles = makeStyles( theme => ({
 
             '.narrowed &': {
                 fontSize: 14,
-        
+
                 '&:hover': {
                     textDecoration: 'underline',
                 }
@@ -160,23 +169,22 @@ const styles = makeStyles( theme => ({
         alignItems: 'center'
     },
     rankBox: {
-        display: 'flex',
-        justifyContent: 'flex-end'
+        position: 'absolute',
+        bottom: 0,
+        left: 0
     },
     rankStatus: {
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '3px 8px',
+        padding: '2px 8px',
         position: 'relative',
-        bottom: -8,
-        right: -8,
         bgcolor: alpha(theme.palette.secondary.dark, .5)
     },
     rankReward: {
         display: 'inline-flex',
         alignItems: 'center',
-        color: 'primary.main'
+        marginLeft: 6
     },
     rankStatusText: {
         color: theme.palette.warning.main,
@@ -187,15 +195,17 @@ const styles = makeStyles( theme => ({
         display:'inline-flex',
         alignItems:'center',
         justifyContent:'center',
-        padding:'3px 2px 3px 8px',
+        padding:'2px 2px 2px 8px',
         position:'relative',
-        bottom:-8,
-        right:-8,
-        backgroundColor: alpha(theme.palette.secondary.dark, .5)
+        backgroundColor: alpha(theme.palette.primary.main, .2),
+        fontSize: 12,
+        textShadow: `1px 1px 0 ${alpha(theme.palette.secondary.main, .8)}`
     },
     rankRewardAmountNumber: {
         fontSize: 14,
-        fontWeight: 600
+        fontWeight: 600,
+        lineHeight: 1.43,
+        margin: '0 2px'
     },
     mainVal: {
         fontSize: 13,
@@ -225,19 +235,7 @@ const styles = makeStyles( theme => ({
 
 }));
 
-const GotchiLevelStyles = makeStyles( theme => ({
-    gotchiLvlTooltip: {
-        '& p': {
-            margin: 0
-        },
-        '& span': {
-            color: theme.palette.primary.main
-        }
-    },
-    customTooltip: {
-        backgroundColor: theme.palette.secondary.dark,
-        marginBottom: 8
-    },
+const GotchiLevelStyles = makeStyles(theme => ({
     gotchiLvl: {
         display: 'inline-flex',
         position: 'relative',
@@ -256,7 +254,7 @@ const GotchiLevelStyles = makeStyles( theme => ({
     },
 }));
 
-const GotchiSvgStyles = makeStyles( theme => ({
+const GotchiSvgStyles = makeStyles(theme => ({
     svgWrapper: {
         margin: 'auto',
         '& svg, & img': {
@@ -309,7 +307,7 @@ const GotchiSvgStyles = makeStyles( theme => ({
     }
 }));
 
-const GotchiWareableLineStyles = makeStyles( theme => ({
+const GotchiWareableLineStyles = makeStyles(theme => ({
 
     gotchiWLineWrapper: {
         display: 'flex',
@@ -351,11 +349,6 @@ const GotchiWareableLineStyles = makeStyles( theme => ({
         marginRight: 4
     },
 
-    customTooltip: {
-        backgroundColor: theme.palette.secondary.dark,
-        marginBottom: 8
-    },
-
     gotchiLvl: {
         display: 'inline-flex',
         position: 'relative',
@@ -364,7 +357,7 @@ const GotchiWareableLineStyles = makeStyles( theme => ({
     }
 }));
 
-const GotchiTraitsStyles = makeStyles( theme => ({
+const GotchiTraitsStyles = makeStyles(theme => ({
     gotchiTraits: {
         position: 'relative',
         display: 'flex',
@@ -391,10 +384,96 @@ const GotchiTraitsStyles = makeStyles( theme => ({
     },
 }));
 
+const GotchiSkillpointsStyles = makeStyles(theme => ({
+    skillpoints: {
+        fontSize: 12,
+        fontWeight: 700,
+        padding: '3px 6px',
+        marginRight: 6,
+        borderRadius: 4,
+        background: alpha(theme.palette.secondary.main, .2),
+        color: alpha(theme.palette.common.white, .8)
+    }
+}));
+
+const GotchiListingStyles = makeStyles(theme => ({
+    container: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    listing: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2px',
+        position: 'relative',
+        bottom: -8,
+        right: -8,
+        backgroundColor: alpha(theme.palette.secondary.dark, .5),
+        fontSize: 14,
+        fontWeight: 600,
+
+        '& p': {
+            margin: 0
+        },
+
+        '&:hover': {
+            backgroundColor: alpha(theme.palette.secondary.dark, .7),
+        }
+    },
+    listingShadow: {
+        display: 'flex',
+        alignItems: 'center',
+        filter: 'grayscale(1)',
+        color: alpha(theme.palette.common.white, .5),
+    },
+    listingLink: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    tooltipInner: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    tooltipItem: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    tooltipDivider: {
+        marginRight: 4,
+        marginLeft: 2
+    },
+    lastPrice: {
+        paddingLeft: 6
+    },
+    lastPriceUp: {
+        color: theme.palette.success.light
+    },
+    lastPriceDown: {
+        color: theme.palette.warning.main
+    },
+}));
+
+const CustomTooltipStyles = makeStyles(theme => ({
+    customTooltip: {
+        backgroundColor: theme.palette.secondary.dark,
+        marginBottom: 8,
+        '& p': {
+            margin: 0
+        },
+        '& span': {
+            color: theme.palette.primary.main
+        }
+    },
+}));
+
 export {
     styles as default,
     GotchiLevelStyles,
     GotchiSvgStyles,
     GotchiWareableLineStyles,
-    GotchiTraitsStyles
+    GotchiTraitsStyles,
+    GotchiSkillpointsStyles,
+    GotchiListingStyles,
+    CustomTooltipStyles
  }

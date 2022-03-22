@@ -1,7 +1,7 @@
-import { makeStyles } from "@mui/styles";
-import {alpha} from "@mui/system";
+import { makeStyles } from '@mui/styles';
+import { alpha } from '@mui/system';
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     customTooltip: {
         backgroundColor: theme.palette.secondary.dark,
         marginBottom: 8

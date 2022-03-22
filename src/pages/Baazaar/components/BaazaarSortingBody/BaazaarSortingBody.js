@@ -1,26 +1,26 @@
 import React, {useContext} from 'react';
 import { Grid, Typography } from '@mui/material';
-import Pagination from '../Pagination/Pagination';
-import { BaazaarContext } from '../../../../contexts/BaazaarContext';
-import Aavegotchi from '../BaazaarSidebar/components/ItemTypes/Aavegotchi';
-import {listingTypes} from '../../../../data/types';
 import classNames from 'classnames';
 
+import GotchiHorizontal from 'components/Gotchi/GotchiHorizontal';
+import Parcel from 'components/Items/Parcel/Parcel';
+import Portal from 'components/Items/Portal/Portal';
+import PortalHorizontal from 'components/Items/Portal/PortalHorizontal';
+import Ticket from 'components/Items/Ticket/Ticket';
+import TicketHorizontal from 'components/Items/Ticket/TicketHorizontal';
+import Wearable from 'components/Items/Wearable/Wearable';
+import WearableHorizontal from 'components/Items/Wearable/WearableHorizontal';
+import { BaazaarContext } from 'contexts/BaazaarContext';
+import { listingTypes } from 'data/types';
+
+import Pagination from '../Pagination/Pagination';
+import Aavegotchi from '../BaazaarSidebar/components/ItemTypes/Aavegotchi';
+
 import { baazaarSortingBodyStyles } from '../../styles';
-import Wearable from '../../../../components/Items/Wearable/Wearable';
-import Portal from '../../../../components/Items/Portal/Portal';
-import Ticket from '../../../../components/Items/Ticket/Ticket';
-import Parcel from '../../../../components/Items/Parcel/Parcel';
-import GotchiHorizontal from "../../../../components/Gotchi/GotchiHorizontal";
-import WearableHorizontal from "../../../../components/Items/Wearable/WearableHorizontal";
-import PortalHorizontal from "../../../../components/Items/Portal/PortalHorizontal";
-import TicketHorizontal from "../../../../components/Items/Ticket/TicketHorizontal";
 
-export default function BaazaarSortingBody({goods, page, limit, onNextPageClick, onPrevPageClick}) {
+export default function BaazaarSortingBody({ goods, page, limit, onNextPageClick, onPrevPageClick }) {
     const classes = baazaarSortingBodyStyles();
-    const {selectedGoodsType} = useContext(BaazaarContext);
-
-    // debugger;
+    const { selectedGoodsType } = useContext(BaazaarContext);
 
     return (
         <Grid className={classes.baazaarBody} item xs={12} sm={12} md={9} lg={9} xl={10}>
@@ -78,7 +78,9 @@ export default function BaazaarSortingBody({goods, page, limit, onNextPageClick,
                         onNextPageClick={onNextPageClick}
                         onPrevPageClick={onPrevPageClick}
                     /> :
-                    <Typography className={classes.noGoods} variant={'caption'}>Spooky Market has no such goods :(</Typography>
+                    <Typography className={classes.noGoods} variant='caption'>
+                        Spooky Market has no such goods :(
+                    </Typography>
                 }
             </div>
         </Grid>

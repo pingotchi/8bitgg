@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from "../../styles";
-import itemUtils from "../../../../utils/itemUtils";
 
-export default function TicketImage({ticket}) {
-    const classes = styles();
+import itemUtils from 'utils/itemUtils';
+
+import { ERC1155InnerStyles } from '../../styles';
+
+export default function TicketImage({ ticket }) {
+    const classes = ERC1155InnerStyles();
 
     return (
         <div className={classes.iconWrapper}>

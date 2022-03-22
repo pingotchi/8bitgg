@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link, Tooltip, Typography } from '@mui/material';
-import classNames from 'classnames';
-import { ERC1155InnerStyles, tooltipStyles, itemStyles, parselStyles, portalStyles } from '../styles';
 import CallMade from '@mui/icons-material/CallMade';
-import ghstIcon from '../../../assets/images/ghst-doubleside.gif';
-import commonUtils from '../../../utils/commonUtils';
-import Web3 from "web3";
-import PortalImage from "./common/PortalImage";
-import CardName from "../common/CardName/CardName";
 
-var web3 = new Web3();
+import classNames from 'classnames';
 
-export default function Portal({portal}) {
+import ethersApi from 'api/ethers.api';
+import commonUtils from 'utils/commonUtils';
+import ghstIcon from 'assets/images/animated/ghst-token.gif';
+
+import PortalImage from './common/PortalImage';
+import CardName from '../common/CardName/CardName';
+
+import { ERC1155InnerStyles, tooltipStyles, itemStyles, parselStyles, portalStyles } from '../styles';
+
+export default function Portal({ portal }) {
     const classes = {
         ...itemStyles(),
         ...ERC1155InnerStyles(),
@@ -30,7 +32,7 @@ export default function Portal({portal}) {
                         <Typography variant='subtitle2'>
                             {
                                 commonUtils.formatPrice(
-                                    parseFloat(web3.utils.fromWei(portal.priceInWei))
+                                    ethersApi.fromWei(portal.priceInWei)
                                 )
                             }
                         </Typography>
@@ -60,7 +62,7 @@ export default function Portal({portal}) {
 
             <Link
                 href={
-                    `https://aavegotchi.com/portal/${portal.tokenId}`
+                    `https://app.aavegotchi.com/portal/${portal.tokenId}`
                 }
                 target='_blank'
                 underline='none'

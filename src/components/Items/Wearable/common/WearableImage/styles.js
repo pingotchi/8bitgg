@@ -1,14 +1,12 @@
-import { makeStyles } from "@mui/styles";
-import {alpha} from "@mui/system";
+import { makeStyles } from '@mui/styles';
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     iconWrapper: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '65%',
+        minHeight: '100px',
         marginBottom: 4,
-
         '.tooltip-wearable &': {
             minHeight: 60
         }

@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from "./styles";
-import commonUtils from "../../../../utils/commonUtils";
-import {Link} from "@mui/material";
+import { Link } from '@mui/material';
 
-export default function GotchiOwner({gotchi}) {
+import commonUtils from 'utils/commonUtils';
+
+import styles from './styles';
+
+export default function GotchiOwner({ gotchi }) {
     const classes = styles();
 
     return (

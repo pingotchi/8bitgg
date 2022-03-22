@@ -1,7 +1,7 @@
-import { makeStyles } from "@mui/styles";
-import {alpha} from "@mui/system";
+import { makeStyles } from '@mui/styles';
+import { alpha } from '@mui/system';
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     gotchiSvg: {
         margin: '0 -8px',
         padding: 8,
@@ -19,17 +19,28 @@ export default makeStyles( theme => ({
             padding: 0,
             marginTop: 5
         },
-        gotchiSetName: {
-            position: 'absolute',
-            bottom: 10,
-            right: 0,
-            left: 0,
-            pointerEvents: 'none'
-        },
 
         // horizontal mode
         '&.horizontal': {
             minWidth: 150
         }
-    }
+    },
+    gotchiSvgPortal: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        left: 0,
+        opacity: .5
+    },
+    gotchiSvgInner: {
+        position: 'relative',
+        zIndex: 1
+    },
+    gotchiSetName: {
+        position: 'absolute',
+        bottom: 10,
+        right: 0,
+        left: 0,
+        pointerEvents: 'none'
+    },
 }));

@@ -1,7 +1,7 @@
 import { alpha } from '@mui/system';
 import { makeStyles } from "@mui/styles";
 
-export default makeStyles( theme => ({
+export default makeStyles(theme => ({
     nameWrapper: {
         whiteSpace: 'nowrap',
         position: 'relative',
@@ -57,6 +57,9 @@ export default makeStyles( theme => ({
         },
         '&.godlike': {
             color: theme.palette.rarity.godlike
+        },
+        '&.drop': {
+            color: theme.palette.customColors.lightGray
         },
         '&.humble': {
             color: theme.palette.realm.humble

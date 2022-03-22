@@ -1,10 +1,12 @@
 import React from 'react';
-import itemUtils from '../../../utils/itemUtils';
-import ERC1155 from '../ERC1155/ERC1155';
-import TicketImage from "./common/TicketImage";
-import CardName from "../common/CardName/CardName";
 
-export default function Ticket({ticket}) {
+import ERC1155 from 'components/Items/ERC1155/ERC1155';
+import itemUtils from 'utils/itemUtils';
+
+import TicketImage from './common/TicketImage';
+import CardName from '../common/CardName/CardName';
+
+export default function Ticket({ ticket }) {
     return (
         <ERC1155 item={{
             id: ticket.id || parseInt(ticket.erc1155TypeId),
@@ -15,8 +17,11 @@ export default function Ticket({ticket}) {
             quantity: ticket.quantity
         }}>
             <TicketImage ticket={ticket} />
-            <CardName itemName={`${ticket.name || itemUtils.getItemRarityName(ticket.erc1155TypeId)} ticket`}
-                      itemRarity={itemUtils.getItemRarityName(ticket.erc1155TypeId)} item={ticket} />
+            <CardName
+                item={ticket}
+                itemName={`${ticket.name || itemUtils.getItemRarityName(ticket.erc1155TypeId)} ticket`}
+                itemRarity='drop'
+            />
         </ERC1155>
     )
 }

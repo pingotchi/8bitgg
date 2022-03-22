@@ -1,11 +1,13 @@
 import React from 'react';
-import styles from "./styles";
-import {Tooltip, Typography} from "@mui/material";
-import {Box} from "@mui/system";
-import commonUtils from "../../../../utils/commonUtils";
-import ghstIcon from "../../../../assets/images/ghst-doubleside.gif";
+import { Tooltip, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 
-export default function GotchiRewards({gotchi}) {
+import commonUtils from 'utils/commonUtils';
+import ghstIcon from 'assets/images/animated/ghst-token.gif';
+
+import styles from './styles';
+
+export default function GotchiRewards({ gotchi }) {
     const classes = styles();
 
     return (
@@ -14,21 +16,21 @@ export default function GotchiRewards({gotchi}) {
                 {gotchi.reward > 0 ? (
                     <Tooltip
                         title={
-                            <Box>
+                            <>
                                 {gotchi.rewardStats.map((item, index) => {
                                     return item.reward !== 0 ? (
-                                        <div key={index}>
-                                            <Typography variant='caption'>
-                                                {item.name}[{item.position}] - <Box className={classes.rankReward}>
-                                                {commonUtils.formatPrice(item.reward)} <img src={ghstIcon} width='14' alt='GHST Token Icon' />
-                                            </Box>
-                                            </Typography>
-                                        </div>
+                                        <p key={index}>
+                                            {item.name}[<span>{item.position}</span>] -
+                                            <span className={classes.rankReward}>
+                                                {commonUtils.formatPrice(item.reward)}
+                                                <img src={ghstIcon} width='14' alt='GHST Token Icon' />
+                                            </span>
+                                        </p>
                                     ) : (
                                         null
                                     )
                                 })}
-                            </Box>
+                            </>
                         }
                         classes={{ tooltip: classes.customTooltip }}
                         enterTouchDelay={0}
@@ -36,8 +38,7 @@ export default function GotchiRewards({gotchi}) {
                         followCursor
                     >
                         <Box className={classes.rankRewardAmount}>
-                            <Typography className={classes.rankRewardAmountNumber}>{commonUtils.formatPrice(gotchi.reward)}</Typography>
-                            <img src={ghstIcon} width='18' alt='GHST Token Icon' />
+                            🏆<Typography className={classes.rankRewardAmountNumber}>{commonUtils.formatPrice(gotchi.reward)}</Typography>🏆
                         </Box>
                     </Tooltip>
 

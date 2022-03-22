@@ -1,17 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { Box, Button, Link, Toolbar, Typography, IconButton } from '@mui/material';
-import {NavLink, useLocation} from 'react-router-dom';
-import classNames from 'classnames';
-import styles from './styles';
-
-import LoginButton from '../../components/Login/LoginButton';
-
 import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 
-import logo from '../../assets/images/logo.svg';
-import discord from '../../assets/images/discord.svg';
-import github from '../../assets/images/github.png';
+import LoginButton from 'components/Login/LoginButton';
+import fireball from 'assets/images/animated/fireball.gif';
+import discord from 'assets/images/icons/discord.svg';
+
+import styles from './styles';
 
 export default function Header() {
     const classes = styles();
@@ -19,7 +18,6 @@ export default function Header() {
     const location = useLocation();
     const navRef = useRef(null);
     const hamburgerRef = useRef(null);
-
 
     // Close nav on route change
     useEffect(() => {
@@ -46,19 +44,19 @@ export default function Header() {
                 <Link href='https://discord.gg/NXEEETxSkC' className={classes.socialLink} target='_blank' underline='none'>
                     <Button className={classes.iconButton} aria-label='add an alarm'>
                         <img src={ discord } alt='' />
-                        <Box component='span' className={classes.iconButtonText}>465</Box>
+                        <Box component='span' className={classes.iconButtonText}>500</Box>
                     </Button>
                 </Link>
                 <Link href='https://twitter.com/orden_gg' className={classes.socialLink} target='_blank' underline='none'>
                     <Button className={classes.iconButton} aria-label='add an alarm'>
                         <TwitterIcon />
-                        <Box component='span' className={classes.iconButtonText}>1040</Box>
+                        <Box component='span' className={classes.iconButtonText}>1200</Box>
                     </Button>
                 </Link>
-                <Link href='https://github.com/orden-gg/ghst-gg' className={classes.socialLink} target='_blank' underline='none'>
+                <Link href='https://github.com/orden-gg/fireball' className={classes.socialLink} target='_blank' underline='none'>
                     <Button className={classes.iconButton} aria-label='add an alarm'>
-                        <img src={ github } alt='' />
-                        <Box component='span' className={classes.iconButtonText}>13</Box>
+                        <GitHubIcon />
+                        <Box component='span' className={classes.iconButtonText}>16</Box>
                     </Button>
                 </Link>
                 <Box className={classes.socialLinkJoin}>
@@ -71,7 +69,7 @@ export default function Header() {
     return (
         <Toolbar className={classes.toolbar}>
             <NavLink className={classes.logoWrapper} to='/'>
-                <img className={classes.logo} src={logo} alt='logo' />
+                <img className={classes.logo} src={fireball} alt='logo' />
             </NavLink>
             <Box className={classNames(classes.navWrapper, navOpen ? 'opened' : 'closed')} ref={navRef}>
                 <nav className={classes.navigation}>
@@ -80,6 +78,9 @@ export default function Header() {
                             Client
                             <Typography variant={'caption'}>Beta</Typography>
                         </Box>
+                    </NavLink>
+                    <NavLink className={classes.navLink} to='/autopet'>
+                        Autopet
                     </NavLink>
                     <NavLink className={classes.navLink} to='/market'>
                         <Box className={classes.navLinkBox}>

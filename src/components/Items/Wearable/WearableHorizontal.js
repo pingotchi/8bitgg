@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './../styles';
-// parts
-import HorizontalPrice from "../common/HorizontalPrice/HorizontalPrice";
-import HorizontalLink from "../common/HorizontalLink/HorizontalLink";
-import WearableImage from "./common/WearableImage/WearableImage";
-import CardName from "../common/CardName/CardName";
-import CardStats from "../common/CardStats/CardStats";
 
-export default function WearableHorizontal({wearable, render}) {
+import WearableImage from './common/WearableImage/WearableImage';
+import HorizontalPrice from '../common/HorizontalPrice/HorizontalPrice';
+import HorizontalLink from '../common/HorizontalLink/HorizontalLink';
+import CardName from '../common/CardName/CardName';
+import CardStats from '../common/CardStats/CardStats';
+import styles from './../styles';
+
+export default function WearableHorizontal({ wearable, render }) {
     const classes = styles();
     const additionalClass = 'horizontal';
 
@@ -21,7 +21,7 @@ export default function WearableHorizontal({wearable, render}) {
         // body
         get body() {
             return <div style={{'width': '70%'}} key={`${wearable.id}-wearable-body`}>
-                <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': "space-around", 'paddingTop': '30px'}}>
+                <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent': 'space-around', 'paddingTop': '30px'}}>
                     <div>
                         <CardName item={wearable} />
                     </div>
@@ -52,7 +52,7 @@ export default function WearableHorizontal({wearable, render}) {
             ))
         )
     }
-    
+
     return (
         <div className={classNames(classes.horizontalCard, wearable.rarity || 'common')}>
             {render.map( (name) => {

@@ -1,19 +1,18 @@
 import { alpha } from '@mui/system';
-
 import { makeStyles } from '@mui/styles';
 
-const styles = makeStyles( theme => ({
+const styles = makeStyles(theme => ({
     baazaar: {
         padding: 24,
         width: 'calc(100vw + 24px)'
     },
     backdrop: {
-        zIndex: theme.zIndex.drawer + 1,
+        zIndex: theme.zIndex.appBar - 1,
         color: '#fff'
     }
 }));
 
-const baazaarBodyStyles = makeStyles( theme => ({
+const baazaarBodyStyles = makeStyles(theme => ({
     baazaarBody: {
         padding: 30
     },
@@ -34,7 +33,7 @@ const baazaarBodyStyles = makeStyles( theme => ({
     }
 }));
 
-const baazaarItemStyles = makeStyles( theme => ({
+const baazaarItemStyles = makeStyles(theme => ({
     baazaarItem: {
         background: theme.palette.background.paper,
         borderWidth: 2,
@@ -147,7 +146,7 @@ const baazaarItemStyles = makeStyles( theme => ({
     }
 }));
 
-const paginationStyles = makeStyles( theme => ({
+const paginationStyles = makeStyles(theme => ({
     wrap: {
         display: 'flex',
         marginTop: 20
@@ -163,7 +162,7 @@ const paginationStyles = makeStyles( theme => ({
     }
 }));
 
-const baazaarSortingBodyStyles = makeStyles( theme => ({
+const baazaarSortingBodyStyles = makeStyles(theme => ({
     baazaarBody: {
         padding: 30
     },
