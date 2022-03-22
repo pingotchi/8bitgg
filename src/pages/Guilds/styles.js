@@ -59,7 +59,7 @@ const styles = makeStyles(theme => ({
     },
     guildsList: {
         padding: 0,
-        display: "grid",
+        display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(240px,1fr))',
         gridGap: theme.spacing(7, 3),
         marginTop: 40,

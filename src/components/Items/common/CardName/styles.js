@@ -1,5 +1,5 @@
 import { alpha } from '@mui/system';
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles(theme => ({
     nameWrapper: {

@@ -51,7 +51,7 @@ const styles = makeStyles(theme => ({
         margin: '0 2px'
     },
     horizontalCard: {
-        display: "flex",
+        display: 'flex',
         marginBottom: 5,
 
         '&.common': {
