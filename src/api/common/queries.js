@@ -1,5 +1,5 @@
 export const gotchiesQuery = (skip, orderDir, hauntId) => {
-    return `{
+  return `{
         aavegotchis(
           first: 1000,
           skip: ${skip},
@@ -46,7 +46,7 @@ export const gotchiByIdQuery = (id) => {
 }
 
 export const userQuery = (id, skip) => {
-    return `{
+  return `{
         user(id: "${id}") {
           id
           gotchisOwned(first: 1000, skip: ${skip}, where: {status: 3}) {
@@ -84,7 +84,7 @@ export const userQuery = (id, skip) => {
 };
 
 export const svgQuery = (id) => {
-    return `{
+  return `{
         aavegotchis(where: {id: ${id}}) {
           id
           svg
@@ -113,7 +113,7 @@ export const erc1155Query = (id, sold, category, orderBy, orderDireciton) => {
 };
 
 export const realmQuery = (address, skip) => {
-    return `{
+  return `{
       parcels(first: 1000, skip: ${skip} where: { owner: "${address}" }) {
         parcelId
         parcelHash
@@ -153,7 +153,7 @@ export const parselQuery = (id) => {
 };
 
 export const clientParselQuery = (id) => {
-    return `{
+  return `{
     parcel( id: ${id}) {
       historicalPrices
       timesTraded
@@ -177,7 +177,7 @@ export const clientParselQuery = (id) => {
 };
 
 export const listedParcelQuery = (id) => {
-    return `{
+  return `{
         erc721Listings(
                 where: {
                     category: "4"
@@ -192,7 +192,7 @@ export const listedParcelQuery = (id) => {
 };
 
 export const getParcelHistoricalPricesQuery = (id) => {
-    return `{
+  return `{
         erc721Listings(
             where:{
                 tokenId_in: ["${id}"]
@@ -211,7 +211,7 @@ export const getParcelHistoricalPricesQuery = (id) => {
 }
 
 export const auctionQuery = (id) => {
-    return `{
+  return `{
       auctions(first: 1, where: { id: "${id}" }) {
         id
         highestBid
@@ -220,7 +220,7 @@ export const auctionQuery = (id) => {
 };
 
 export const listedParcelsQuery = (skip, orderDir, size) => {
-    return `{
+  return `{
         erc721Listings(
             first: 1000,
             skip: ${skip},
@@ -288,7 +288,7 @@ export const raffleQuery = (id) => {
 };
 
 export const raffleEntrantsQuery = (address) => {
-    return `{
+  return `{
       raffleEntrants(where: { address: "${address}" }) {
         id
         ticketId
@@ -301,7 +301,7 @@ export const raffleEntrantsQuery = (address) => {
 };
 
 export const raffleWinsQuery = (address) => {
-    return `{
+  return `{
       raffleWinners(where: { address: "${address}" }) {
         id
         item{
